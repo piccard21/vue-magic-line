@@ -1,19 +1,20 @@
 
   <template>
-        <div id="aaa" ref="magic-line-wrapper" class="d-block position-relative"> 
-            <div class="d-flex flex-row magic-line-item-wrapper">
+        <div ref="magic-line-wrapper" class="magic-line-wrapper"> 
+            <div class="magic-line-item-wrapper">
 
-
-              <div class="p-2 magic-line-item" v-for="(item, index) in items" :key="index"> 
+              <div class="magic-line-item" v-for="(item, index) in items" :key="index"> 
                     <a href="#" 
                         @click="onClick($event, index)" 
                         @mouseover="onHover($event, index)"
-                        :class="{ active: isPrimary(index) }"
-                        :id="'magic-line-'+index">{{ item.text }}</a>
+                        class="magic-line-item"
+                        :class="{ active: isPrimary(index) }">
+                      {{ item.text }}
+                    </a>
               </div>
 
-
             </div>
+
             <div class="magic-line-primary" ref="magic-line-primary"></div>
             <div class="magic-line-secondary" ref="magic-line-secondary"></div>
         </div> 
@@ -32,21 +33,14 @@
           type: Boolean,
           default: true
         },
+        items: {
+          type: Array,
+          required: true
+        }
       },
       data () {
         return {
-            activeIndex: 0,
-            items: [{
-                text: "Flex item 1",
-            },{
-                text: "Flex item 222",
-            },{
-                text: "Flex item 333333",
-            },{
-                text: "Flex item 4444444444",
-            },{
-                text: "Flex item 555555555555555",
-            }]
+            activeIndex: 0
         }
       }, 
       methods: {
@@ -76,15 +70,15 @@
           if(!this.secondary) return
 
           let elMetrics = el.getBoundingClientRect()
-          this.magicLineSecondray.style.width = elMetrics.width + "px"
-          this.magicLineSecondray.style.left = elMetrics.left + "px"
+          this.magicLineSecondary.style.width = elMetrics.width + "px"
+          this.magicLineSecondary.style.left = elMetrics.left + "px"
         }
       },
       computed: {
         magicLinePrimary() {
             return this.$refs["magic-line-primary"]
         },
-        magicLineSecondray() {
+        magicLineSecondary() {
             return this.$refs["magic-line-secondary"]
         },
         magicLineWrapper() {
@@ -101,7 +95,7 @@
         if(this.secondary) {
           this.setSecondary(activeEl, this.activeIndex)
         } else {  
-          this.magicLineSecondray.parentNode.removeChild(this.magicLineSecondray);
+          this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
         }
       }, 
     }
@@ -113,22 +107,31 @@
     display: block;
   } 
 
+  .magic-line-item-wrapper {
+    display: flex;
+    flex-dirextion: row;
+  }
+
+  .magic-line-item {
+    padding: .5rem;
+  }
+
   .magic-line-primary {
     position: absolute;
-    bottom: -2px;
+    bottom: 3px;
     left: 0;
-    height: 14px;
-    background: red;
+    height: 3px;
+    background: rgb(0, 188, 212);
     transition: all 0.3s;
     z-index: 2000;
   }
 
   .magic-line-secondary {
     position: absolute;
-    bottom: -2px;
+    bottom: 3px;
     left: 0;
-    height: 6px;
-    background: lightgrey;
+    height: 2px;
+    background: rgba(211, 211, 211, 0.4);
     transition: all 0.3s;
     z-index: 1000;
   }
