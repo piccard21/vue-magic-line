@@ -1,22 +1,26 @@
 
   <template>
-        <div ref="magic-line-wrapper" class="magic-line-wrapper"> 
-            <div class="magic-line-item-wrapper">
+        <div ref="magic-line-wrapper" class="magic-line-wrapper">  
 
-              <div class="magic-line-item" v-for="(item, index) in items" :key="index"> 
+            <div ref="magic-line-item-wrapper" class="magic-line-item-wrapper">
+              <div class="magic-line-item" v-for="(item, index) in tabs" :key="index"> 
                     <a href="#" 
                         @click="onClick($event, index)" 
-                        @mouseover="onHover($event, index)"
-                        class="magic-line-item"
+                        @mouseover="onHover($event)"
+                        class="magic-line-item-link"
                         :class="{ active: isPrimary(index) }">
                       {{ item.text }}
                     </a>
               </div>
 
+              <div class="magic-line-primary" ref="magic-line-primary"></div>
+              <div class="magic-line-secondary" ref="magic-line-secondary"></div>
+
             </div>
 
-            <div class="magic-line-primary" ref="magic-line-primary"></div>
-            <div class="magic-line-secondary" ref="magic-line-secondary"></div>
+            <div class="magic-line-content-wrapper">
+              <slot/>  
+            </div>
         </div> 
   </template>
 
@@ -25,49 +29,43 @@
     export default {
       name: 'vue-magic-line',
       props: {
-        active: {
-          type: Number,
-          default: 0
-        },
         secondary: {
           type: Boolean,
           default: true
-        },
-        items: {
-          type: Array,
-          required: true
         }
       },
       data () {
         return {
-            activeIndex: 0
+            activeIndex: 0,
+            tabs: []
         }
       }, 
       methods: {
         onClick(event, index) {
-             this.setPrimary(event.target, index)
+             this.active=index
         },
-        onHover(event, index) {
-            this.setSecondary(event.target, index)
+        onHover(event) {
+            this.setSecondary(event.target)
         },
         isPrimary(index) {
             return this.active == index
         },
-        setPrimary(el, index) {
+        setPrimary(el) { 
+          if(typeof el === "undefined" ) return 
+
           let elMetrics = el.getBoundingClientRect()
           this.magicLinePrimary.style.width = elMetrics.width + "px"
           this.magicLinePrimary.style.left = elMetrics.left + "px"
 
-          for (let element of this.$refs["magic-line-wrapper"].getElementsByClassName("active")) {
+          for (let element of this.magicLineItemWrapper.getElementsByClassName("active")) {
             element.classList.remove('active')
           }
 
           el.classList.add('active');
-
-          this.activeIndex = index
         },
-        setSecondary(el, index) { 
-          if(!this.secondary) return
+        setSecondary(el) { 
+          if(!this.secondary) return 
+          if(typeof el === "undefined" ) return 
 
           let elMetrics = el.getBoundingClientRect()
           this.magicLineSecondary.style.width = elMetrics.width + "px"
@@ -83,33 +81,57 @@
         },
         magicLineWrapper() {
             return this.$refs["magic-line-wrapper"]
+        },
+        magicLineItemWrapper() {
+            return this.$refs["magic-line-item-wrapper"]
+        },
+        magicLineItemLinks() {
+          return this.magicLineItemWrapper.getElementsByClassName("magic-line-item-link")
+        },
+        active: {
+          get() {
+            return this.activeIndex
+          },
+          set(index) {
+            this.activeIndex = index
+
+            this.setPrimary(this.magicLineItemLinks[index]) 
+
+            if(this.secondary) {
+              this.setSecondary(this.magicLineItemLinks[index]) 
+            }
+          } 
         }
       }, 
       created() {
-        this.activeIndex = this.active
+        this.tabs = this.$children
       },
       mounted() {
-        let activeEl = this.$refs["magic-line-wrapper"].getElementsByClassName("active")[0]  
-        this.setPrimary(activeEl, this.activeIndex)
-
-        if(this.secondary) {
-          this.setSecondary(activeEl, this.activeIndex)
-        } else {  
+        if(!this.secondary) {
           this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
+        } 
+
+        for(let  [index, tab]  of this.tabs.entries()) { 
+          if(tab.$el.classList.contains("active")) {  
+            this.$nextTick(function () {
+              this.active = index  
+            }) 
+            break
+          }
         }
-      }, 
+      }
     }
 </script>
 
 <style scoped lang="scss"> 
   .magic-line-wrapper {
-    position: relative;
     display: block;
   } 
 
   .magic-line-item-wrapper {
     display: flex;
     flex-dirextion: row;
+    position: relative;
   }
 
   .magic-line-item {

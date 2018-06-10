@@ -1,7 +1,12 @@
-import VueMagicLine from './VueMagicLine.vue';
+import VueMagicLine from './VueMagicLine';
+import VueMagicLineTab from './components/VueMagicLineTab'
 
-module.exports = {
-  install: function (Vue, options) {
-    Vue.component('vue-magic-line', VueMagicLine);
-  }
+export default {
+    install(Vue) {
+    	console.info("CALLED",VueMagicLineTab)
+	    Vue.component('vue-magic-line', VueMagicLine);
+	    Vue.component('vue-magic-line-tab', VueMagicLineTab);
+    },
 };
+
+export { VueMagicLine, VueMagicLineTab };
