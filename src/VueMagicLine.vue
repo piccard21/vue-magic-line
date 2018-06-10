@@ -18,7 +18,7 @@
 
             </div>
 
-            <div class="magic-line-content-wrapper">
+            <div ref="magic-line-content-wrapper" class="magic-line-content-wrapper">
               <slot/>  
             </div>
         </div> 
@@ -89,9 +89,15 @@
         magicLineItemWrapper() {
             return this.$refs["magic-line-item-wrapper"]
         },
+        magicLineContentWrapper() {
+            return this.$refs["magic-line-content-wrapper"]
+        }, 
         magicLineItemLinks() {
           return this.magicLineItemWrapper.getElementsByClassName("magic-line-item-link")
         },
+        magicLineContents() {
+            return this.magicLineContentWrapper.getElementsByClassName("magic-line-item-content")
+        }, 
         active: {
           get() {
             return this.activeIndex
@@ -113,21 +119,27 @@
       }, 
       created() {
         this.tabs = this.$children
-        console.info(this.tabs)
       },
       mounted() {
         if(!this.secondary) {
           this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
         } 
+          let hasActive = false
 
-        for(let  [index, tab] of this.tabs.entries()) {  
-          if(tab.$el.classList.contains("active")) {  
-            this.$nextTick(function () {
-              this.active = index  
-            }) 
-            break
+          for(let  [index, tab] of this.tabs.entries()) {  
+            if(tab.$el.classList.contains("active")) {   
+              this.$nextTick( () => { 
+                    hasActive = true
+                    this.active = index  
+              }) 
+              tab.$el.classList.remove("active")    // why this doesn't work?!?!
+              break
+            }
+          } 
+
+          if (!hasActive) {
+                this.active = 0
           }
-        }
       }
     }
 </script>
