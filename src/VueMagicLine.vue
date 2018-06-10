@@ -1,6 +1,6 @@
 
   <template>
-        <div ref="magic-line-wrapper" class="magic-line-wrapper">  
+        <div ref="magic-line-wrapper" class="magic-line-wrapper" @mouseout="onMouseout($event)">  
 
             <div ref="magic-line-item-wrapper" class="magic-line-item-wrapper">
               <div class="magic-line-item" v-for="(item, index) in tabs" :key="index"> 
@@ -41,6 +41,9 @@
         }
       }, 
       methods: {
+        onMouseout(event) {
+          this.setSecondary(this.magicLineItemLinks[this.active]) 
+        },
         onClick(event, index) {
              this.active=index
         },
