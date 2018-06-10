@@ -3,13 +3,13 @@
         <div ref="magic-line-wrapper" class="magic-line-wrapper" @mouseout="onMouseout($event)">  
 
             <div ref="magic-line-item-wrapper" class="magic-line-item-wrapper">
-              <div class="magic-line-item" v-for="(item, index) in tabs" :key="index"> 
+              <div class="magic-line-item" v-for="(tab, index) in tabs" :key="index"> 
                     <a href="#" 
                         @click="onClick($event, index)" 
                         @mouseover="onHover($event)"
                         class="magic-line-item-link"
                         :class="{ active: isPrimary(index) }">
-                      {{ item.text }}
+                      {{ tab.text }}
                     </a>
               </div>
 
@@ -18,7 +18,7 @@
 
             </div>
 
-            <div class="magic-line-content-wrapper">
+            <div ref="magic-line-content-wrapper" class="magic-line-content-wrapper">
               <slot/>  
             </div>
         </div> 
@@ -64,7 +64,8 @@
             element.classList.remove('active')
           }
 
-          el.classList.add('active');
+
+          el.parentNode.classList.add('active');
         },
         setSecondary(el) { 
           if(!this.secondary) return 
@@ -88,9 +89,15 @@
         magicLineItemWrapper() {
             return this.$refs["magic-line-item-wrapper"]
         },
+        magicLineContentWrapper() {
+            return this.$refs["magic-line-content-wrapper"]
+        }, 
         magicLineItemLinks() {
           return this.magicLineItemWrapper.getElementsByClassName("magic-line-item-link")
         },
+        magicLineContents() {
+            return this.magicLineContentWrapper.getElementsByClassName("magic-line-item-content")
+        }, 
         active: {
           get() {
             return this.activeIndex
@@ -117,15 +124,22 @@
         if(!this.secondary) {
           this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
         } 
+          let hasActive = false
 
-        for(let  [index, tab]  of this.tabs.entries()) { 
-          if(tab.$el.classList.contains("active")) {  
-            this.$nextTick(function () {
-              this.active = index  
-            }) 
-            break
+          for(let  [index, tab] of this.tabs.entries()) {  
+            if(tab.$el.classList.contains("active")) {   
+              this.$nextTick( () => { 
+                    hasActive = true
+                    this.active = index  
+              }) 
+              tab.$el.classList.remove("active")    // why this doesn't work?!?!
+              break
+            }
+          } 
+
+          if (!hasActive) {
+                this.active = 0
           }
-        }
       }
     }
 </script>
