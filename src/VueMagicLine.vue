@@ -3,13 +3,13 @@
         <div ref="magic-line-wrapper" class="magic-line-wrapper" @mouseout="onMouseout($event)">  
 
             <div ref="magic-line-item-wrapper" class="magic-line-item-wrapper">
-              <div class="magic-line-item" v-for="(item, index) in tabs" :key="index"> 
+              <div class="magic-line-item" v-for="(tab, index) in tabs" :key="index"> 
                     <a href="#" 
                         @click="onClick($event, index)" 
                         @mouseover="onHover($event)"
                         class="magic-line-item-link"
                         :class="{ active: isPrimary(index) }">
-                      {{ item.text }}
+                      {{ tab.text }}
                     </a>
               </div>
 
@@ -112,13 +112,15 @@
       }, 
       created() {
         this.tabs = this.$children
+        console.info(this.tabs)
       },
       mounted() {
         if(!this.secondary) {
           this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
         } 
 
-        for(let  [index, tab]  of this.tabs.entries()) { 
+        for(let  [index, tab] of this.tabs.entries()) { 
+          console.info(tab)
           if(tab.$el.classList.contains("active")) {  
             this.$nextTick(function () {
               this.active = index  
