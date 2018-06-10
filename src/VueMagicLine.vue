@@ -64,7 +64,8 @@
             element.classList.remove('active')
           }
 
-          el.classList.add('active');
+
+          el.parentNode.classList.add('active');
         },
         setSecondary(el) { 
           if(!this.secondary) return 
@@ -119,8 +120,7 @@
           this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
         } 
 
-        for(let  [index, tab] of this.tabs.entries()) { 
-          console.info(tab)
+        for(let  [index, tab] of this.tabs.entries()) {  
           if(tab.$el.classList.contains("active")) {  
             this.$nextTick(function () {
               this.active = index  
