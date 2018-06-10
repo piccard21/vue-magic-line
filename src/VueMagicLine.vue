@@ -131,8 +131,8 @@
               this.$nextTick( () => { 
                     hasActive = true
                     this.active = index  
+                    tab.$el.classList.remove("active")    // TODO: why this doesn't work?!?!
               }) 
-              tab.$el.classList.remove("active")    // why this doesn't work?!?!
               break
             }
           } 
