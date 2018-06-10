@@ -25,6 +25,7 @@
   </template>
 
 <script> 
+    import _ from 'lodash' 
 
     export default {
       name: 'vue-magic-line',
@@ -118,33 +119,43 @@
         }
       }, 
       created() {
-        this.tabs = this.$children
+        this.tabs = this.$children 
+        this.setPrimary = _.debounce(this.setPrimary, 100) 
+        this.setSecondary= _.debounce(this.setSecondary, 100)  
       },
       mounted() {
         if(!this.secondary) {
           this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
         } 
-          let hasActive = false
+        let hasActive = false
 
-          for(let  [index, tab] of this.tabs.entries()) {  
-            if(tab.$el.classList.contains("active")) {   
-              this.$nextTick( () => { 
-                    hasActive = true
-                    this.active = index  
-                    tab.$el.classList.remove("active")    // TODO: why this doesn't work?!?!
-              }) 
-              break
-            }
-          } 
-
-          if (!hasActive) {
-                this.active = 0
+        for(let  [index, tab] of this.tabs.entries()) {  
+          if(tab.$el.classList.contains("active")) {   
+            this.$nextTick( () => { 
+                  hasActive = true
+                  this.active = index  
+                  tab.$el.classList.remove("active")    // TODO: why this doesn't work?!?!
+            }) 
+            break
           }
+        } 
+
+        if (!hasActive) {
+              this.active = 0
+        }
       }
     }
 </script>
 
 <style scoped lang="scss"> 
+
+  a,a:link,a:visited,a:hover,a:active {
+    color: #42b983;
+    text-decoration: none;
+  }
+
+
+
   .magic-line-wrapper {
     display: block;
   } 
