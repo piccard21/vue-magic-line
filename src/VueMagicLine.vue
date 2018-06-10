@@ -112,7 +112,7 @@
             }
 
             for(let [i, tab] of this.tabs.entries()) {  
-                tab.isActive = (this.active === i);
+                tab.isActive = (index === i);
             }
           } 
         }
