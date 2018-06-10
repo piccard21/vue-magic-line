@@ -76,7 +76,8 @@ module.exports = [
         ]
     }),
     merge(config, {
-        entry: path.resolve(__dirname + '/src/VueMagicLine.vue'),
+        // entry: path.resolve(__dirname + '/src/VueMagicLine.vue'),
+        entry: path.resolve(__dirname + '/src/install.js'),
         output: {
             filename: 'vue-magic-line.js',
             libraryTarget: 'umd',
