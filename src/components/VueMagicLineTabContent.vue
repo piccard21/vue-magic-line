@@ -1,7 +1,7 @@
 <template> 
 	<div>
 
-  <transition name="slide-fade">
+  <transition name="fade">
     <div 
     	class="magic-line-item-content" 
       	v-show="isActive"  
@@ -34,14 +34,10 @@
 </script>
 
 <style lang="scss">   
-.slide-fade-enter-active {
-  transition: all .3s ease;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to {
-  transform: translateX(10px);
+.fade-enter, .fade-leave-to {
   opacity: 0;
-} 
+}
 </style>
