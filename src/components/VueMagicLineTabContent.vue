@@ -1,9 +1,16 @@
 <template> 
-    <div class="magic-line-item-content" 
-      v-show="isActive" 
-      :class="{ active21: isActive }"> 
+	<div>
+
+  <transition name="slide-fade">
+    <div 
+    	class="magic-line-item-content" 
+      	v-show="isActive"  
+      	:class="{ active: isActive }"> 
         <slot/>  
     </div>
+  </transition>
+		
+	</div>
 </template>
 
 <script> 
@@ -16,13 +23,25 @@
       },
       data () {
         return {
+        	show: false,
           isActive: false,
         }
       },
       mounted() { 
+          console.info("inner", this.$el)
       } 
     }
 </script>
 
-<style scoped lang="scss">  
+<style lang="scss">   
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+} 
 </style>

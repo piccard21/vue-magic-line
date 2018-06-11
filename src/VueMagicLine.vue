@@ -18,8 +18,8 @@
 
             </div>
 
-            <div ref="magic-line-content-wrapper" class="magic-line-content-wrapper">
-              <slot/>  
+            <div ref="magic-line-content-wrapper" class="magic-line-content-wrapper">  
+              <slot/>    
             </div>
         </div> 
   </template>
@@ -55,6 +55,7 @@
             return this.active == index
         },
         setPrimary(el) { 
+          console.info("setPrimary", el)
           if(typeof el === "undefined" ) return 
 
           let elMetrics = el.getBoundingClientRect()
@@ -130,30 +131,36 @@
         let hasActive = false
 
         for(let  [index, tab] of this.tabs.entries()) {  
+
           if(tab.$el.classList.contains("active")) {   
-            this.$nextTick( () => { 
-                  hasActive = true
-                  this.active = index  
-                  tab.$el.classList.remove("active")    // TODO: why this doesn't work?!?!
+              this.$nextTick( () => { 
+                hasActive = true
+                this.active = index  
+        
+                console.info("outer", tab.$el, tab.$el.classList.contains("active"))
+                tab.$el.classList.remove("active")    // TODO: why this doesn't work?!?!
+                console.info("outer", tab.$el, tab.$el.classList.contains("active"))
             }) 
+
             break
           }
         } 
 
-        if (!hasActive) {
-              this.active = 0
+        if (!hasActive) { 
+              this.$nextTick( () => { 
+                this.active = 0
+            }) 
         }
       }
     }
 </script>
 
-<style scoped lang="scss"> 
+<style  lang="scss"> 
 
   a,a:link,a:visited,a:hover,a:active {
     color: #42b983;
     text-decoration: none;
-  }
-
+  } 
 
 
   .magic-line-wrapper {
