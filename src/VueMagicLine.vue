@@ -8,7 +8,7 @@
                         @click="onClick($event, index)" 
                         @mouseover="onHover($event)"
                         class="magic-line-item-link"
-                        :class="{ active: isPrimary(index) }">
+                        :class="{ active: isPrimary(index), disabled: isDisabled(index) }">
                       {{ tab.name }}
                     </a>
               </div>
@@ -33,15 +33,12 @@
         secondary: {
           type: Boolean,
           default: true
-        },
-        active: {
-          type: Number,
-          default: 1
         }
       },
       data () {
         return {
             tabs: [],
+            disabledTabs: [],
             currentActiveIndex: 0
         }
       }, 
@@ -57,6 +54,9 @@
         },
         isPrimary(index) {
             return this.activeIndex == index
+        },
+        isDisabled(index) {
+            return this.disabledTabs.includes(index)
         },
         setPrimary(el) {  
           if(typeof el === "undefined" ) return 
@@ -110,12 +110,9 @@
           },
           set(index) {
             this.currentActiveIndex = index
-        console.info("this.magicLineItemLinks ...", this.magicLineItemLinks) 
-            this.setPrimary(this.magicLineItemLinks[index]) 
 
-            if(this.secondary) {
-              this.setSecondary(this.magicLineItemLinks[index]) 
-            }
+            this.setPrimary(this.magicLineItemLinks[index]) 
+            this.setSecondary(this.magicLineItemLinks[index]) 
 
             for(let [i, tab] of this.tabs.entries()) {  
                 tab.isActive = (index === i);
@@ -130,7 +127,18 @@
       },
       mounted() {
         this.$nextTick( () => { 
-          this.activeIndex = this.active
+
+          for(let [i, tab] of this.tabs.entries()) {  
+              if('active' in tab.$attrs) {
+                tab.isActive = this.activeIndex  = i
+              } 
+              if('disabled' in tab.$attrs) {
+                tab.isDisabled = true
+                this.disabledTabs.push(i)
+              } 
+          }
+
+
           if(!this.secondary) {
             this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
           }
@@ -190,5 +198,12 @@
     background: rgba(211, 211, 211, 0.4);
     transition: all 0.3s;
     z-index: 1000;
+  }
+
+  .isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
   }
 </style>

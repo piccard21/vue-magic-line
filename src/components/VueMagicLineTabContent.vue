@@ -4,7 +4,7 @@
     <div 
     	class="magic-line-item-content" 
       	v-show="isActive"  
-      	:class="{ active: isActive }"> 
+        :class="{ active: isActive, disabled: isDisabled }"> 
         <slot/>  
     </div> 
 		
@@ -16,6 +16,7 @@
       name: 'vue-magic-line-tab',
       props: {
         name: {
+          type: String,
           required: true
         }
       },
@@ -23,6 +24,7 @@
         return {
         	show: false,
           isActive: false,
+          isDisabled: false,
         }
       },
       mounted() { 
@@ -31,5 +33,9 @@
     }
 </script>
 
-<style lang="scss">   
+<style lang="scss">  
+  .disabled {
+    color: red; 
+    opacity: 0.5; 
+  } 
 </style>
