@@ -166,11 +166,11 @@ Property | Description | Value | Default value
  **secondaryHeight** | height for secondary line| Number | 2px
  **secondaryyBottom** | bottom for secondary line| Number | 3px
 
- 
+
 
 ## License
 
-busy-load is licensed under the MIT License - see the LICENSE file for details.
+vue-magic-line is licensed under the MIT License - see the LICENSE file for details.
 
 
 ## Author
