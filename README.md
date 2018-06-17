@@ -80,7 +80,6 @@ yarn run dev
 
 ``` 
 
-
   <template> 
     <div class="my-awesome-tabs">
       
@@ -105,8 +104,13 @@ yarn run dev
           </vue-magic-line-tab> 
       </vue-magic-line> 
 
-      <input type="number" min="0" :max="tabsCount" v-model.number="tab">
+      <input type="number" min="0" :max="tabsCount" v-model.number="tabDisable">
       <button @click="toogleDisable">Toggle Disable</button>
+      <br>
+
+      <input type="number" min="0" :max="tabsCount" v-model.number="tabActive">
+      <button @click="toogleActive">Toggle Active</button>
+
     </div>
   </template>
 
@@ -118,18 +122,29 @@ yarn run dev
       data() {
         return {
           tabsCount: 0,
-          tab: 2
+          tabDisable: 2,
+          tabActive: 0
         }
       },
       methods: {
         toogleDisable() {
           let disabledTabs = this.$children[0].disabledTabs
-          let indexOf = disabledTabs.indexOf(this.tab)
-          
+          let indexOf = disabledTabs.indexOf(this.tabDisable)
+
           if(indexOf > -1) {
-            disabledTabs.splice(disabledTabs.indexOf(this.tab), 1); 
+            disabledTabs.splice(disabledTabs.indexOf(this.tabDisable), 1); 
           } else {
-            disabledTabs.push(this.tab); 
+            disabledTabs.push(this.tabDisable); 
+          }
+        },
+        toogleActive() {
+          let disabledTabs = this.$children[0].disabledTabs
+          let indexOf = disabledTabs.indexOf(this.tabActive)
+
+          if(indexOf > -1) {
+            console.info("disabled")
+          } else {
+            this.$children[0].activeIndex = this.tabActive
           }
         }
       },
