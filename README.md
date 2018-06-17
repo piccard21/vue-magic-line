@@ -86,14 +86,14 @@ TODO
   <template> 
     <div class="my-awesome-tabs">
       
-      <vue-magic-line :secondary="true" primary-color="red" :primary-height="10" :primary-bottom="-20">
-          <vue-magic-line-tab name="First tab" disabled>
+      <vue-magic-line :secondary="true" justify-content="space-evenly" primary-color="red" :primary-height="10" :primary-bottom="-20">
+          <vue-magic-line-tab name="First tab" >
               This is the content of the first vue-magic-line-tab
           </vue-magic-line-tab>
           <vue-magic-line-tab name="Second tab" active>
               This is the content of the second vue-magic-line-tab
           </vue-magic-line-tab>
-          <vue-magic-line-tab name="Third tab" >
+          <vue-magic-line-tab name="Third tab" disabled>
               This is the content of the Third vue-magic-line-tab
           </vue-magic-line-tab> 
           <vue-magic-line-tab name="Fourth tab">
