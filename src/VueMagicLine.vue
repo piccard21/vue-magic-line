@@ -138,7 +138,6 @@
               } 
           }
 
-
           if(!this.secondary) {
             this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
           }
@@ -147,63 +146,58 @@
     }
 </script>
 
-<style  lang="scss"> 
-
-.fade-enter-active {
-  transition: opacity .5s;
-}
-.fade-leave-active {
-  transition: opacity .2s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-
-
-  a,a:link,a:visited,a:hover,a:active {
-    color: #42b983;
-    text-decoration: none;
-  } 
-
+<style  lang="scss">   
 
   .magic-line-wrapper {
     display: block;
+
+    .magic-line-item-wrapper {
+      display: flex;
+      flex-dirextion: row;
+      position: relative; 
+
+      .magic-line-item {
+        padding: .5rem;
+
+        .magic-line-item-link, 
+        .magic-line-item-link:link, 
+        .magic-line-item-link:visited, 
+        .magic-line-item-link:hover,
+        .magic-line-item-link:active  {
+          color: #42b983;
+          text-decoration: none;
+        }
+
+        .disabled {
+          color: currentColor;
+          cursor: not-allowed;
+          opacity: 0.5;
+          text-decoration: none;
+        }
+      }
+
+
+    .magic-line-primary {
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      height: 3px;
+      background: rgb(0, 188, 212);
+      transition: all 0.3s;
+      z-index: 2000;
+    }
+
+    .magic-line-secondary {
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      height: 2px;
+      background: rgba(211, 211, 211, 0.4);
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+
   } 
 
-  .magic-line-item-wrapper {
-    display: flex;
-    flex-dirextion: row;
-    position: relative;
-  }
-
-  .magic-line-item {
-    padding: .5rem;
-  }
-
-  .magic-line-primary {
-    position: absolute;
-    bottom: 3px;
-    left: 0;
-    height: 3px;
-    background: rgb(0, 188, 212);
-    transition: all 0.3s;
-    z-index: 2000;
-  }
-
-  .magic-line-secondary {
-    position: absolute;
-    bottom: 3px;
-    left: 0;
-    height: 2px;
-    background: rgba(211, 211, 211, 0.4);
-    transition: all 0.3s;
-    z-index: 1000;
-  }
-
-  .isDisabled {
-    color: currentColor;
-    cursor: not-allowed;
-    opacity: 0.5;
-    text-decoration: none;
-  }
+} 
 </style>

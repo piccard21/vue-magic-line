@@ -36,6 +36,6 @@
 <style lang="scss">  
   .disabled {
     color: red; 
-    opacity: 0.5; 
+    opacity: 0.5;  
   } 
 </style>
