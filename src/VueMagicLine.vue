@@ -100,6 +100,31 @@
           let elMetrics = el.getBoundingClientRect()
           this.magicLineSecondary.style.width = elMetrics.width + "px"
           this.magicLineSecondary.style.left = elMetrics.left + "px"
+        },
+        setCss() {
+          if(this.primaryColor) {
+            this.magicLinePrimary.style.background = this.primaryColor;
+          }
+          if(this.primaryHeight) {
+            this.magicLinePrimary.style.height = this.primaryHeight+"px";
+          }
+          if(this.primaryBottom) {
+            this.magicLinePrimary.style.bottom = this.primaryBottom+"px";
+          }
+
+          if(!this.secondary) {
+            this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
+          } else {
+            if(this.secondaryColor) {
+            this.magicLineSecondary.style.background = this.secondaryColor;
+            }
+            if(this.secondaryHeight) {
+              this.magicLineSecondary.style.height = this.secondaryHeight+"px";
+            }
+            if(this.secondaryBottom) {
+              this.magicLineSecondary.style.bottom = this.secondaryBottom+"px";
+            }
+          }
         }
       },
       computed: {
@@ -161,29 +186,7 @@
           }
 
           //set css
-          if(this.primaryColor) {
-            this.magicLinePrimary.style.background = this.primaryColor;
-          }
-          if(this.primaryHeight) {
-            this.magicLinePrimary.style.height = this.primaryHeight+"px";
-          }
-          if(this.primaryBottom) {
-            this.magicLinePrimary.style.bottom = this.primaryBottom+"px";
-          }
-
-          if(!this.secondary) {
-            this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
-          } else {
-            if(this.secondaryColor) {
-            this.magicLineSecondary.style.background = this.secondaryColor;
-            }
-            if(this.secondaryHeight) {
-              this.magicLineSecondary.style.height = this.secondaryHeight+"px";
-            }
-            if(this.secondaryBottom) {
-              this.magicLineSecondary.style.bottom = this.secondaryBottom+"px";
-            }
-          }
+          this.setCss()
         })
        }  
     }
