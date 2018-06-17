@@ -1,89 +1,66 @@
-# vue-component-skeleton
+# vue-magic-line
 
-> Starter for component-development with VueJS
+> A tabs-component for Vue.
  
 ## Features
 
-- create smaller Lodash builds with the **lodash-webpack-plugin** by cherry-picking Lodash modules
-- export the component as a library 
-
-``` 
-<script type="text/javascript" src="vue-my-component.js"></script>
-<script type="text/javascript">
-  Vue.use(VueMyComponent);
-</script>
-``` 
-- import your component in a Node.js-based development 
-
-```
-import VueMyComponent from 'vue-my-component'
-``` 
-- use SCSS inside your SFC
+- multiple options for styling
 
 
-## Build Setup
-
-``` bash
-# install dependencies
-yarn install
-
-# watch while development
-yarn run watch
-
-# build for production with minification
-yarn run build
-```
 
 ## Configuration
 
-- change the filename **VueComponentSkeleton.vue** to yours, i.e. **VueMyComponent.vue**
-- replace inside the following files **vue-component-skeleton** with your wanted name
-- do it as well for **VueComponentSkeleton**
-- files:
-	- install.js
-	- package.json
-	- webpack.config.js
 
-## Ready for development
-
-- link the package
+### Install component
 
 ``` 
-yarn link
-``` 
+import VueMagicLine from 'vue-magic-line'
 
-- goto a project of yours wich will add the component
-``` 
-cd ../project
-yarn link "vue-my-component"
-yarn add vue-my-component
-``` 
-
-- now you can develop your component by
-``` 
-cd vue-my-component
-yarn watch
-``` 
-
-... while you can test it live inside another project
-
-``` 
-cd ../project
-yarn run dev
+Vue.use(VueMagicLine)
 ``` 
 
 
-TODO
-
-- doc: flex
-- geht als js einbinden
+### Template
 
 ``` 
+<vue-magic-line>
+  <vue-magic-line-tab name="First tab" >
+      This is the content of the first vue-magic-line-tab
+  </vue-magic-line-tab>
+  <vue-magic-line-tab name="Second tab" active>
+      This is the content of the second vue-magic-line-tab
+  </vue-magic-line-tab>
+  <vue-magic-line-tab name="Third tab" disabled>
+      This is the content of the Third vue-magic-line-tab
+  </vue-magic-line-tab> 
+  <vue-magic-line-tab name="Fourth tab">
+      This is the content of the Fourth vue-magic-line-tab
+  </vue-magic-line-tab>
+  <vue-magic-line-tab name="Fifth tab" disabled>
+      This is the content of the Fifth vue-magic-line-tab
+  </vue-magic-line-tab>
+  <vue-magic-line-tab name="Sixth tab">
+      This is the content of the Sixth vue-magic-line-tab
+  </vue-magic-line-tab> 
+</vue-magic-line> 
+``` 
 
-  <template> 
+
+### Bigger example
+
+``` 
+<template> 
     <div class="my-awesome-tabs">
       
-      <vue-magic-line :secondary="true" justify-content="space-evenly" primary-color="red" :primary-height="10" :primary-bottom="-20">
+      <vue-magic-line 
+      :secondary="true" 
+      :magic-line-wrapper-css="{'background': '#fff'}"  
+      :magic-line-item-wrapper-css="{'justify-content': 'space-between', 'color': 'green'}"  
+      :magic-line-item-css="{'flex-grow': '1'}"  
+      :magic-line-item-link-css="{'color': '#fff'}"  
+      primary-color="red" 
+      :primary-height="10" 
+      :primary-bottom="-20">
           <vue-magic-line-tab name="First tab" >
               This is the content of the first vue-magic-line-tab
           </vue-magic-line-tab>
@@ -170,6 +147,3 @@ TODO
 
 </style>
 ``` 
-
-
-</style>
