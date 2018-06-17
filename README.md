@@ -151,7 +151,18 @@ Vue.use(VueMagicLine)
 
 ## Options
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+Property | Description | Value | Default value
+--- | --- | --- | ---
+ **secondary** | show secondary line | Boolean | true
+ **parent** | apply to parent and not to link | Boolean | true
+ **magicLineWrapperCss** | CSS for  class **magic-line-wrapper**| Object | {}
+ **magicLineItemWrapperCss** | CSS for  class **magic-line-item-wrapper**| Object | {}
+ **magicLineItemCss** | CSS for  class **magic-line-item**| Object | {}
+ **magicLineItemCLinkss** | CSS for  class **magic-line-item-link**| Object | {}
+ **primaryColor** | color for primary line| String | rgb(0, 188, 212)
+ **primaryHeight** | height for primary line| Number | 3px
+ **primaryBottom** | bottom for primary line| Number | 3px
+ **secondaryColor** | color for secondary line| String | rgba(211, 211, 211, 0.4)
+ **secondaryHeight** | height for secondary line| Number | 2px
+ **secondaryyBottom** | bottom for secondary line| Number | 3px
+1 | 2 | 3 | 4
