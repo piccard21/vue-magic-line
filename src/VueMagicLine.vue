@@ -32,6 +32,14 @@
           type: Boolean,
           default: true
         },
+        parent: {
+          type: Boolean,
+          default: true
+        },
+        justifyContent: {
+          type: String,
+          default: "flex-start"
+        },
         primaryColor: {
           type: String
         },
@@ -79,6 +87,10 @@
             return this.disabledTabs.includes(index)
         },
         setPosition(el, elToPosition) {
+          if(this.parent) {
+            el = el.parentNode
+          }
+
           let elMetrics = el.getBoundingClientRect()
           let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
 
@@ -86,9 +98,9 @@
           elToPosition.style.left = elMetrics.left + "px"
           elToPosition.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + "px"
         },
-        setPrimary(el) {  
+        setPrimary(el) {   
           if(typeof el === "undefined" ) return 
-            
+
           this.setPosition(el, this.magicLinePrimary)
 
           for (let element of this.magicLineItemWrapper.getElementsByClassName("active")) {
@@ -104,6 +116,14 @@
           this.setPosition(el, this.magicLineSecondary)
         },
         setCss() {
+          //set justifyContent
+          console.info(this.justifyContent) 
+            // for (let mi of this.magicLineItems) {
+            //   mi.style.justifyContent = this.justifyContent
+            // } 
+            this.magicLineItemWrapper.style.justifyContent = this.justifyContent
+
+          // set primary
           if(this.primaryColor) {
             this.magicLinePrimary.style.background = this.primaryColor;
           }
@@ -145,6 +165,9 @@
         magicLineContentWrapper() {
             return this.$refs["magic-line-content-wrapper"]
         }, 
+        magicLineItems() {
+          return this.magicLineItemWrapper.getElementsByClassName("magic-line-item") 
+        },
         magicLineItemLinks() {
           return this.magicLineItemWrapper.getElementsByClassName("magic-line-item-link") 
         },
@@ -173,6 +196,9 @@
       mounted() {
         this.$nextTick( () => { 
 
+          //set css
+          this.setCss()
+
           for(let [i, tab] of this.tabs.entries()) {  
             // set active tab
             if('active' in tab.$attrs) {
@@ -184,9 +210,6 @@
               this.disabledTabs.push(i)
             } 
           }
-
-          //set css
-          this.setCss()
         })
        }  
     }
@@ -197,13 +220,17 @@
   .magic-line-wrapper {
     display: block;
     position: relative; 
+    background: yellow;
 
     .magic-line-item-wrapper {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
+      flex-wrap: wrap; 
+      background: orange;
 
       .magic-line-item {
+      background: blue;
+     flex: 1;
         padding: .5rem;
 
         .magic-line-item-link, 

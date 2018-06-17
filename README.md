@@ -75,7 +75,6 @@ yarn run dev
 
 TODO
 
-- strich an li und nicht a 
 - doc: flex
 - justify-content als prop?
 - geht als js einbinden
