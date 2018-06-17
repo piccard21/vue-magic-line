@@ -36,9 +36,29 @@
           type: Boolean,
           default: true
         },
-        justifyContent: {
-          type: String,
-          default: "flex-start"
+        magicLineWrapperCss: {
+          type: Object,
+          default: function () {
+            return {}
+          }
+        },
+        magicLineItemWrapperCss: {
+          type: Object,
+          default: function () {
+            return {}
+          }
+        },
+        magicLineItemCss: {
+          type: Object,
+          default: function () {
+            return {}
+          }
+        },
+        magicLineItemLinkCss: {
+          type: Object,
+          default: function () {
+            return {}
+          }
         },
         primaryColor: {
           type: String
@@ -115,13 +135,48 @@
 
           this.setPosition(el, this.magicLineSecondary)
         },
+        setCssObject(cssObject) {
+            let keys =  Object.keys(cssObject)
+            if(keys.includes("el")) {
+                console.info("el")
+
+                Object.entries(cssObject.css).forEach((entry) => {
+                  let [key, value] = entry;
+                  // console.info(entry) 
+                  cssObject.el.style[key] = value 
+                });
+            }
+            if(keys.includes("els")) {
+                console.info("els", cssObject.els)
+                for (let el of cssObject.els) { 
+                    Object.entries(cssObject.css).forEach((entry) => {
+                      let [key, value] = entry;
+                      console.info(el, key, value) 
+                      el.style[key] = value 
+                    }); 
+                }
+        }
+
+        },
         setCss() {
-          //set justifyContent
-          console.info(this.justifyContent) 
-            // for (let mi of this.magicLineItems) {
-            //   mi.style.justifyContent = this.justifyContent
-            // } 
-            this.magicLineItemWrapper.style.justifyContent = this.justifyContent
+          let cssObjects = [{
+            css: this.magicLineWrapperCss, 
+            el: this.magicLineWrapper
+          },{
+            css: this.magicLineItemWrapperCss, 
+            el: this.magicLineItemWrapper
+          },{
+            css: this.magicLineItemCss, 
+            els: this.magicLineItems
+          },{
+            css: this.magicLineItemLinkCss, 
+            els: this.magicLineItemLinks
+          }]
+
+          for (let o of cssObjects) {
+            this.setCssObject(o)
+          }
+
 
           // set primary
           if(this.primaryColor) {
@@ -230,7 +285,6 @@
 
       .magic-line-item {
       background: blue;
-     flex: 1;
         padding: .5rem;
 
         .magic-line-item-link, 
