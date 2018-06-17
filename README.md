@@ -71,3 +71,47 @@ yarn watch
 cd ../project
 yarn run dev
 ``` 
+
+
+
+
+
+
+
+``` 
+  <template> 
+    <vue-magic-line :secondary="true" :active="2">
+        <vue-magic-line-tab name="First tab">
+            This is the content of the first vue-magic-line-tab
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Second tab">
+            This is the content of the second vue-magic-line-tab
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Third tab">
+            This is the content of the Third vue-magic-line-tab
+        </vue-magic-line-tab> 
+        <vue-magic-line-tab name="Fourth tab">
+            This is the content of the Fourth vue-magic-line-tab
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Fifth tab">
+            This is the content of the Fifth vue-magic-line-tab
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Sixth tab">
+            This is the content of the Sixth vue-magic-line-tab
+        </vue-magic-line-tab> 
+    </vue-magic-line> 
+  </template>
+
+<script> 
+    import VueMagicLine from 'vue-magic-line'
+
+    Vue.use(VueMagicLine)
+    export default {
+        }
+</script>
+
+<style scoped> 
+``` 
+
+
+</style>
