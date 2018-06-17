@@ -60,7 +60,6 @@
       }, 
       methods: {
         onMouseleave(event) {
-          console.info("out")
           this.setSecondary(this.magicLineItemLinks[this.activeIndex]) 
         },
         onClick(event, index) {
@@ -79,10 +78,19 @@
         isDisabled(index) {
             return this.disabledTabs.includes(index)
         },
+        setPosition(el, elToPosition) {
+          let elMetrics = el.getBoundingClientRect()
+          let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
+
+          elToPosition.style.width = elMetrics.width + "px"
+          elToPosition.style.left = elMetrics.left + "px"
+          elToPosition.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + "px"
+        },
         setPrimary(el) {  
           if(typeof el === "undefined" ) return 
 
           let elMetrics = el.getBoundingClientRect()
+
           this.magicLinePrimary.style.width = elMetrics.width + "px"
           this.magicLinePrimary.style.left = elMetrics.left + "px"
 
@@ -97,8 +105,11 @@
           if(typeof el === "undefined" ) return 
 
           let elMetrics = el.getBoundingClientRect()
+          let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
+
           this.magicLineSecondary.style.width = elMetrics.width + "px"
           this.magicLineSecondary.style.left = elMetrics.left + "px"
+          this.magicLineSecondary.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + "px"
         },
         setCss() {
           if(this.primaryColor) {
@@ -193,12 +204,12 @@
 
   .magic-line-wrapper {
     display: block;
-    background: yellow;
+    position: relative; 
 
     .magic-line-item-wrapper {
       display: flex;
-      flex-dirextion: row;
-      position: relative; 
+      flex-direction: row;
+      flex-wrap: wrap;
 
       .magic-line-item {
         padding: .5rem;
