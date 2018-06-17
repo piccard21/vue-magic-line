@@ -76,10 +76,7 @@ yarn run dev
 TODO
 
 - doc: flex
-- justify-content als prop?
 - geht als js einbinden
-
-
 
 ``` 
 

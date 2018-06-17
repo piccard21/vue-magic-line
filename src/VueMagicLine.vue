@@ -153,7 +153,8 @@
 
         },
         setCss() {
-          let cssObjects = [{
+          // tabs 
+          [{
             css: this.magicLineWrapperCss, 
             el: this.magicLineWrapper
           },{
@@ -165,13 +166,11 @@
           },{
             css: this.magicLineItemLinkCss, 
             el: this.magicLineItemLinks
-          }]
+          }].forEach((object) => {
+            this.setCssObject(object)
+          })
 
-          for (let o of cssObjects) {
-            this.setCssObject(o)
-          }
-
-          // set primary
+          // primary
           if(this.primaryColor) {
             this.magicLinePrimary.style.background = this.primaryColor;
           }
@@ -182,6 +181,7 @@
             this.magicLinePrimary.style.bottom = this.primaryBottom+"px";
           }
 
+          // secondary
           if(!this.secondary) {
             this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
           } else {
