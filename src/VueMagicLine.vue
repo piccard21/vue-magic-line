@@ -25,8 +25,6 @@
   </template>
 
 <script> 
-    import _ from 'lodash' 
-
     export default {
       name: 'vue-magic-line',
       props: {
@@ -167,8 +165,6 @@
       }, 
       created() {
         this.tabs = this.$children 
-        // this.setPrimary = _.debounce(this.setPrimary, 100) 
-        // this.setSecondary= _.debounce(this.setSecondary, 100)  
       },
       mounted() {
         this.$nextTick( () => { 

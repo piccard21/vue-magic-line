@@ -80,10 +80,11 @@ yarn run dev
 
 ``` 
 
+
   <template> 
-    <div>
+    <div class="my-awesome-tabs">
       
-      <vue-magic-line :secondary="true" primary-color="red" primary-height="10" primary-bottom="-20"  secondary-bottom="-20" secondary-color="red"  secondary-height="10" >
+      <vue-magic-line :secondary="true" primary-color="red" :primary-height="10" :primary-bottom="-20">
           <vue-magic-line-tab name="First tab" disabled>
               This is the content of the first vue-magic-line-tab
           </vue-magic-line-tab>
@@ -104,8 +105,8 @@ yarn run dev
           </vue-magic-line-tab> 
       </vue-magic-line> 
 
-      <button>Toggle 0</button>
-      <button>Toggle 4</button>
+      <input type="number" min="0" :max="tabsCount" v-model.number="tab">
+      <button @click="toogleDisable">Toggle Disable</button>
     </div>
   </template>
 
@@ -114,11 +115,43 @@ yarn run dev
 
     Vue.use(VueMagicLine)
     export default {
+      data() {
+        return {
+          tabsCount: 0,
+          tab: 2
         }
+      },
+      methods: {
+        toogleDisable() {
+          let disabledTabs = this.$children[0].disabledTabs
+          let indexOf = disabledTabs.indexOf(this.tab)
+          
+          if(indexOf > -1) {
+            disabledTabs.splice(disabledTabs.indexOf(this.tab), 1); 
+          } else {
+            disabledTabs.push(this.tab); 
+          }
+        }
+      },
+      mounted() {
+        this.tabsCount = this.$children[0].$children.length-1
+      }
+    }
 </script>
 
-<style scoped> 
+<style lang="scss"> 
 
+.my-awesome-tabs {
+  /deep/ .magic-line-wrapper {
+    .magic-line-item-wrapper { 
+       .magic-line-secondary {
+          background: blue ;
+          height: 1px ;
+          bottom: -10px ;
+      }
+    }
+  } 
+} 
 
 </style>
 ``` 
