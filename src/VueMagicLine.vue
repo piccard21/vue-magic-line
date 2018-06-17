@@ -1,8 +1,8 @@
 
   <template>
-        <div ref="magic-line-wrapper" class="magic-line-wrapper" @mouseout="onMouseout($event)">  
+        <div ref="magic-line-wrapper" class="magic-line-wrapper">  
 
-            <div ref="magic-line-item-wrapper" class="magic-line-item-wrapper">
+            <div ref="magic-line-item-wrapper" class="magic-line-item-wrapper" @mouseleave="onMouseleave($event)">
               <div class="magic-line-item" v-for="(tab, index) in tabs" :key="index"> 
                     <a href="#" 
                         @click="onClick($event, index)" 
@@ -59,7 +59,8 @@
         }
       }, 
       methods: {
-        onMouseout(event) {
+        onMouseleave(event) {
+          console.info("out")
           this.setSecondary(this.magicLineItemLinks[this.activeIndex]) 
         },
         onClick(event, index) {
@@ -192,6 +193,7 @@
 
   .magic-line-wrapper {
     display: block;
+    background: yellow;
 
     .magic-line-item-wrapper {
       display: flex;

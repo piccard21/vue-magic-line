@@ -30,12 +30,6 @@
 </script>
 
 <style lang="scss">  
-.magic-line-item-content {
-  .disabled {
-  } 
-}
-
-
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

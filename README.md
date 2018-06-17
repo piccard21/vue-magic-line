@@ -73,8 +73,13 @@ yarn run dev
 ``` 
 
 
+TODO
 
-
+- strich an li und nicht a 
+- onmouseout
+- doc: flex
+- justify-content als prop?
+- super long
 
 
 
