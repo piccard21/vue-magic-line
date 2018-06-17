@@ -33,6 +33,24 @@
         secondary: {
           type: Boolean,
           default: true
+        },
+        primaryColor: {
+          type: String
+        },
+        primaryHeight: {
+          type: Number
+        },
+        primaryBottom: {
+          type: Number
+        },
+        secondaryColor: {
+          type: String
+        },
+        secondaryHeight: {
+          type: Number
+        },
+        secondaryBottom: {
+          type: Number
         }
       },
       data () {
@@ -95,14 +113,12 @@
             return this.$refs["magic-line-wrapper"]
         },
         magicLineItemWrapper() {
-        console.info("magicLineItemWrapper ... ", this.$refs["magic-line-item-wrapper"])
             return this.$refs["magic-line-item-wrapper"]
         },
         magicLineContentWrapper() {
             return this.$refs["magic-line-content-wrapper"]
         }, 
         magicLineItemLinks() {
-        console.info("this.magicLineItemLinks ... ", this.$refs["magic-line-item-wrapper"])
           return this.magicLineItemWrapper.getElementsByClassName("magic-line-item-link") 
         },
         magicLineContents() {
@@ -133,17 +149,40 @@
         this.$nextTick( () => { 
 
           for(let [i, tab] of this.tabs.entries()) {  
-              if('active' in tab.$attrs) {
-                tab.isActive = this.activeIndex  = i
-              } 
-              if('disabled' in tab.$attrs) {
-                tab.isDisabled = true
-                this.disabledTabs.push(i)
-              } 
+            // set active tab
+            if('active' in tab.$attrs) {
+              tab.isActive = this.activeIndex  = i
+            } 
+            // set disabled tabs
+            if('disabled' in tab.$attrs) {
+              tab.isDisabled = true
+              this.disabledTabs.push(i)
+            } 
+          }
+
+          //set css
+          if(this.primaryColor) {
+            this.magicLinePrimary.style.background = this.primaryColor;
+          }
+          if(this.primaryHeight) {
+            this.magicLinePrimary.style.height = this.primaryHeight+"px";
+          }
+          if(this.primaryBottom) {
+            this.magicLinePrimary.style.bottom = this.primaryBottom+"px";
           }
 
           if(!this.secondary) {
             this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
+          } else {
+            if(this.secondaryColor) {
+            this.magicLineSecondary.style.background = this.secondaryColor;
+            }
+            if(this.secondaryHeight) {
+              this.magicLineSecondary.style.height = this.secondaryHeight+"px";
+            }
+            if(this.secondaryBottom) {
+              this.magicLineSecondary.style.bottom = this.secondaryBottom+"px";
+            }
           }
         })
        }  
@@ -184,10 +223,10 @@
     .magic-line-primary {
       position: absolute;
       bottom: 3px;
-      left: 0;
+      left: 0; 
+      transition: all 0.3s;
       height: 3px;
       background: rgb(0, 188, 212);
-      transition: all 0.3s;
       z-index: 2000;
     }
 

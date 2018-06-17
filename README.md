@@ -79,27 +79,34 @@ yarn run dev
 
 
 ``` 
+
   <template> 
-    <vue-magic-line :secondary="true" :active="2">
-        <vue-magic-line-tab name="First tab">
-            This is the content of the first vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Second tab">
-            This is the content of the second vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Third tab">
-            This is the content of the Third vue-magic-line-tab
-        </vue-magic-line-tab> 
-        <vue-magic-line-tab name="Fourth tab">
-            This is the content of the Fourth vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Fifth tab">
-            This is the content of the Fifth vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Sixth tab">
-            This is the content of the Sixth vue-magic-line-tab
-        </vue-magic-line-tab> 
-    </vue-magic-line> 
+    <div>
+      
+      <vue-magic-line :secondary="true" primary-color="red" primary-height="10" primary-bottom="-20"  secondary-bottom="-20" secondary-color="red"  secondary-height="10" >
+          <vue-magic-line-tab name="First tab" disabled>
+              This is the content of the first vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Second tab" active>
+              This is the content of the second vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Third tab" >
+              This is the content of the Third vue-magic-line-tab
+          </vue-magic-line-tab> 
+          <vue-magic-line-tab name="Fourth tab">
+              This is the content of the Fourth vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Fifth tab" disabled>
+              This is the content of the Fifth vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Sixth tab">
+              This is the content of the Sixth vue-magic-line-tab
+          </vue-magic-line-tab> 
+      </vue-magic-line> 
+
+      <button>Toggle 0</button>
+      <button>Toggle 4</button>
+    </div>
   </template>
 
 <script> 
@@ -111,6 +118,9 @@ yarn run dev
 </script>
 
 <style scoped> 
+
+
+</style>
 ``` 
 
 
