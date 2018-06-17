@@ -5115,8 +5115,8 @@ vue-loader@^13.0.5:
     vue-template-es2015-compiler "^1.6.0"
 
 vue-magic-line@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/vue-magic-line/-/vue-magic-line-0.1.1.tgz#4744924f675d7efebcf3d51c2196d9d6a79c20c0"
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vue-magic-line/-/vue-magic-line-0.1.2.tgz#44fced1128fca4753abac94ae3142d1f0ddbe98d"
   dependencies:
     vue "^2.5.11"
 
