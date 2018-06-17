@@ -9,7 +9,7 @@
                         @mouseover="onHover($event)"
                         class="magic-line-item-link"
                         :class="{ active: isPrimary(index) }">
-                      {{ tab.text }}
+                      {{ tab.name }}
                     </a>
               </div>
 
@@ -19,7 +19,7 @@
             </div>
 
             <div ref="magic-line-content-wrapper" class="magic-line-content-wrapper">  
-              <slot/>    
+                  <slot/>    
             </div>
         </div> 
   </template>
@@ -33,29 +33,32 @@
         secondary: {
           type: Boolean,
           default: true
+        },
+        active: {
+          type: Number,
+          default: 1
         }
       },
       data () {
         return {
-            activeIndex: 0,
-            tabs: []
+            tabs: [],
+            currentActiveIndex: 0
         }
       }, 
       methods: {
         onMouseout(event) {
-          this.setSecondary(this.magicLineItemLinks[this.active]) 
+          this.setSecondary(this.magicLineItemLinks[this.activeIndex]) 
         },
         onClick(event, index) {
-             this.active=index
+             this.activeIndex=index
         },
         onHover(event) {
             this.setSecondary(event.target)
         },
         isPrimary(index) {
-            return this.active == index
+            return this.activeIndex == index
         },
-        setPrimary(el) { 
-          console.info("setPrimary", el)
+        setPrimary(el) {  
           if(typeof el === "undefined" ) return 
 
           let elMetrics = el.getBoundingClientRect()
@@ -65,7 +68,6 @@
           for (let element of this.magicLineItemWrapper.getElementsByClassName("active")) {
             element.classList.remove('active')
           }
-
 
           el.parentNode.classList.add('active');
         },
@@ -85,28 +87,30 @@
         magicLineSecondary() {
             return this.$refs["magic-line-secondary"]
         },
-        magicLineWrapper() {
+        magicLineWrapper() { 
             return this.$refs["magic-line-wrapper"]
         },
         magicLineItemWrapper() {
+        console.info("magicLineItemWrapper ... ", this.$refs["magic-line-item-wrapper"])
             return this.$refs["magic-line-item-wrapper"]
         },
         magicLineContentWrapper() {
             return this.$refs["magic-line-content-wrapper"]
         }, 
         magicLineItemLinks() {
-          return this.magicLineItemWrapper.getElementsByClassName("magic-line-item-link")
+        console.info("this.magicLineItemLinks ... ", this.$refs["magic-line-item-wrapper"])
+          return this.magicLineItemWrapper.getElementsByClassName("magic-line-item-link") 
         },
         magicLineContents() {
             return this.magicLineContentWrapper.getElementsByClassName("magic-line-item-content")
         }, 
-        active: {
+        activeIndex: {
           get() {
-            return this.activeIndex
+            return this.currentActiveIndex
           },
           set(index) {
-            this.activeIndex = index
-
+            this.currentActiveIndex = index
+        console.info("this.magicLineItemLinks ...", this.magicLineItemLinks) 
             this.setPrimary(this.magicLineItemLinks[index]) 
 
             if(this.secondary) {
@@ -121,41 +125,32 @@
       }, 
       created() {
         this.tabs = this.$children 
-        this.setPrimary = _.debounce(this.setPrimary, 100) 
-        this.setSecondary= _.debounce(this.setSecondary, 100)  
+        // this.setPrimary = _.debounce(this.setPrimary, 100) 
+        // this.setSecondary= _.debounce(this.setSecondary, 100)  
       },
       mounted() {
-        if(!this.secondary) {
-          this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary);
-        } 
-        let hasActive = false
-
-        for(let  [index, tab] of this.tabs.entries()) {  
-
-          if(tab.$el.classList.contains("active")) {   
-              this.$nextTick( () => { 
-                hasActive = true
-                this.active = index  
-        
-                console.info("outer", tab.$el, tab.$el.classList.contains("active"))
-                tab.$el.classList.remove("active")    // TODO: why this doesn't work?!?!
-                console.info("outer", tab.$el, tab.$el.classList.contains("active"))
-            }) 
-
-            break
+        this.$nextTick( () => { 
+          this.activeIndex = this.active
+          if(!this.secondary) {
+            this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
           }
-        } 
-
-        if (!hasActive) { 
-              this.$nextTick( () => { 
-                this.active = 0
-            }) 
-        }
-      }
+        })
+       }  
     }
 </script>
 
 <style  lang="scss"> 
+
+.fade-enter-active {
+  transition: opacity .5s;
+}
+.fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 
   a,a:link,a:visited,a:hover,a:active {
     color: #42b983;
