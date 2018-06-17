@@ -1,14 +1,21 @@
 {
   "name": "vue-magic-line",
-  "description": "A Vue.js for tabs with a sliding line",
-  "version": "1.0.0",
+  "description": "A tabs-component for Vue.",
+  "keywords": [
+    "vue-component",
+    "tabs"
+  ],
+  "version": "0.1.0",
   "author": "cafe-serendipity <cafe.serendipity21@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-magic-line.js",
-  "private": true,
   "scripts": {
     "watch": "webpack --watch --progress --hide-modules",
     "build": "webpack --progress --hide-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piccard21/vue-magic-line"
   },
   "dependencies": {
     "vue": "^2.5.11"
