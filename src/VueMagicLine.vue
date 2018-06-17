@@ -88,11 +88,8 @@
         },
         setPrimary(el) {  
           if(typeof el === "undefined" ) return 
-
-          let elMetrics = el.getBoundingClientRect()
-
-          this.magicLinePrimary.style.width = elMetrics.width + "px"
-          this.magicLinePrimary.style.left = elMetrics.left + "px"
+            
+          this.setPosition(el, this.magicLinePrimary)
 
           for (let element of this.magicLineItemWrapper.getElementsByClassName("active")) {
             element.classList.remove('active')
@@ -104,12 +101,7 @@
           if(!this.secondary) return 
           if(typeof el === "undefined" ) return 
 
-          let elMetrics = el.getBoundingClientRect()
-          let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
-
-          this.magicLineSecondary.style.width = elMetrics.width + "px"
-          this.magicLineSecondary.style.left = elMetrics.left + "px"
-          this.magicLineSecondary.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + "px"
+          this.setPosition(el, this.magicLineSecondary)
         },
         setCss() {
           if(this.primaryColor) {
