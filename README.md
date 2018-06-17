@@ -82,11 +82,11 @@ Vue.use(VueMagicLine)
       </vue-magic-line> 
 
       <input type="number" min="0" :max="tabsCount" v-model.number="tabDisable">
-      <button @click="toogleDisable">Toggle Disable</button>
+      <button @click="toggleDisable">Toggle Disable</button>
       <br>
 
       <input type="number" min="0" :max="tabsCount" v-model.number="tabActive">
-      <button @click="toogleActive">Toggle Active</button>
+      <button @click="toggleActive">Toggle Active</button>
 
     </div>
   </template>
@@ -104,7 +104,7 @@ Vue.use(VueMagicLine)
         }
       },
       methods: {
-        toogleDisable() {
+        toggleDisable() {
           let disabledTabs = this.$children[0].disabledTabs
           let indexOf = disabledTabs.indexOf(this.tabDisable)
 
@@ -114,7 +114,7 @@ Vue.use(VueMagicLine)
             disabledTabs.push(this.tabDisable); 
           }
         },
-        toogleActive() {
+        toggleActive() {
           let disabledTabs = this.$children[0].disabledTabs
           let indexOf = disabledTabs.indexOf(this.tabActive)
 
