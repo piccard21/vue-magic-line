@@ -135,27 +135,21 @@
 
           this.setPosition(el, this.magicLineSecondary)
         },
-        setCssObject(cssObject) {
-            let keys =  Object.keys(cssObject)
-            if(keys.includes("el")) {
-                console.info("el")
-
-                Object.entries(cssObject.css).forEach((entry) => {
-                  let [key, value] = entry;
-                  // console.info(entry) 
-                  cssObject.el.style[key] = value 
-                });
+        setCssObject(cssObject) { 
+            if(cssObject.el instanceof HTMLCollection) {
+              for (let el of cssObject.el) { 
+                  Object.entries(cssObject.css).forEach((entry) => {
+                    let [key, value] = entry;
+                    el.style[key] = value 
+                  }); 
+              }
             }
-            if(keys.includes("els")) {
-                console.info("els", cssObject.els)
-                for (let el of cssObject.els) { 
-                    Object.entries(cssObject.css).forEach((entry) => {
-                      let [key, value] = entry;
-                      console.info(el, key, value) 
-                      el.style[key] = value 
-                    }); 
-                }
-        }
+            else {
+              Object.entries(cssObject.css).forEach((entry) => {
+                let [key, value] = entry;
+                cssObject.el.style[key] = value 
+              });
+            } 
 
         },
         setCss() {
@@ -167,16 +161,15 @@
             el: this.magicLineItemWrapper
           },{
             css: this.magicLineItemCss, 
-            els: this.magicLineItems
+            el: this.magicLineItems
           },{
             css: this.magicLineItemLinkCss, 
-            els: this.magicLineItemLinks
+            el: this.magicLineItemLinks
           }]
 
           for (let o of cssObjects) {
             this.setCssObject(o)
           }
-
 
           // set primary
           if(this.primaryColor) {
