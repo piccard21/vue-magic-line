@@ -165,4 +165,13 @@ Property | Description | Value | Default value
  **secondaryColor** | color for secondary line| String | rgba(211, 211, 211, 0.4)
  **secondaryHeight** | height for secondary line| Number | 2px
  **secondaryyBottom** | bottom for secondary line| Number | 3px
-1 | 2 | 3 | 4
+
+ 
+
+## License
+
+busy-load is licensed under the MIT License - see the LICENSE file for details.
+
+
+## Author
+[Andreas Stephan](https://cafe-serendipity.com)
