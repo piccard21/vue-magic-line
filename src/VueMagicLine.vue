@@ -267,17 +267,14 @@
 
   .magic-line-wrapper {
     display: block;
-    position: relative; 
-    background: yellow;
+    position: relative;
 
     .magic-line-item-wrapper {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap; 
-      background: orange;
+      flex-wrap: wrap;
 
       .magic-line-item {
-      background: blue;
         padding: .5rem;
 
         .magic-line-item-link, 
