@@ -151,6 +151,8 @@ Vue.use(VueMagicLine)
 
 ## Options
 
+### <vue-magic-line>
+
 Property | Description | Value | Default value
 --- | --- | --- | ---
  **secondary** | show secondary line | Boolean | true
@@ -165,6 +167,14 @@ Property | Description | Value | Default value
  **secondaryColor** | color for secondary line| String | rgba(211, 211, 211, 0.4)
  **secondaryHeight** | height for secondary line| Number | 2px
  **secondaryyBottom** | bottom for secondary line| Number | 3px
+
+
+### <vue-magic-line-tab>
+
+Property | Description | Value | Default value
+--- | --- | --- | ---
+ **active** | set active tab | Boolean | true
+ **disabled** | disable tab | Boolean | false
 
 
 
