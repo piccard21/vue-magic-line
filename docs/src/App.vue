@@ -3,7 +3,7 @@
     <img src="./assets/logo.png">
     <h1>{{ title }}</h1>
     <h2>A tabs vue-component</h2>
-    
+
     <vue-magic-line>
       <vue-magic-line-tab name="First tab" >
           This is the content of the first vue-magic-line-tab
