@@ -4,8 +4,9 @@
  
 ## Features
 
+- use the power of flex for the tabs layout
 - multiple options for styling
-
+- disable tab
 
 
 ## Configuration
@@ -28,19 +29,19 @@ Vue.use(VueMagicLine)
       This is the content of the first vue-magic-line-tab
   </vue-magic-line-tab>
   <vue-magic-line-tab name="Second tab" active>
-      This is the content of the second vue-magic-line-tab
+      <b>This is the content of the second vue-magic-line-tab</b>
   </vue-magic-line-tab>
   <vue-magic-line-tab name="Third tab" disabled>
-      This is the content of the Third vue-magic-line-tab
+      This is the content of the third vue-magic-line-tab
   </vue-magic-line-tab> 
   <vue-magic-line-tab name="Fourth tab">
-      This is the content of the Fourth vue-magic-line-tab
+      <i>This is the content of the fourth vue-magic-line-tab</i>
   </vue-magic-line-tab>
   <vue-magic-line-tab name="Fifth tab" disabled>
-      This is the content of the Fifth vue-magic-line-tab
+      This is the content of the fifth vue-magic-line-tab
   </vue-magic-line-tab>
   <vue-magic-line-tab name="Sixth tab">
-      This is the content of the Sixth vue-magic-line-tab
+      <p>This is the content of the sixth vue-magic-line-tab</p>
   </vue-magic-line-tab> 
 </vue-magic-line> 
 ``` 
@@ -61,24 +62,24 @@ Vue.use(VueMagicLine)
       primary-color="red" 
       :primary-height="10" 
       :primary-bottom="-20">
-          <vue-magic-line-tab name="First tab" >
-              This is the content of the first vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Second tab" active>
-              This is the content of the second vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Third tab" disabled>
-              This is the content of the Third vue-magic-line-tab
-          </vue-magic-line-tab> 
-          <vue-magic-line-tab name="Fourth tab">
-              This is the content of the Fourth vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Fifth tab" disabled>
-              This is the content of the Fifth vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Sixth tab">
-              This is the content of the Sixth vue-magic-line-tab
-          </vue-magic-line-tab> 
+        <vue-magic-line-tab name="First tab" >
+            This is the content of the first vue-magic-line-tab
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Second tab" active>
+            <b>This is the content of the second vue-magic-line-tab</b>
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Third tab" disabled>
+            This is the content of the third vue-magic-line-tab
+        </vue-magic-line-tab> 
+        <vue-magic-line-tab name="Fourth tab">
+            <i>This is the content of the fourth vue-magic-line-tab</i>
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Fifth tab" disabled>
+            This is the content of the fifth vue-magic-line-tab
+        </vue-magic-line-tab>
+        <vue-magic-line-tab name="Sixth tab">
+            <p>This is the content of the sixth vue-magic-line-tab</p>
+        </vue-magic-line-tab> 
       </vue-magic-line> 
 
       <input type="number" min="0" :max="tabsCount" v-model.number="tabDisable">
@@ -95,6 +96,7 @@ Vue.use(VueMagicLine)
     import VueMagicLine from 'vue-magic-line'
 
     Vue.use(VueMagicLine)
+
     export default {
       data() {
         return {
