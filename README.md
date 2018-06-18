@@ -1,6 +1,10 @@
 # vue-magic-line
 
 > A tabs-component for Vue.
+
+## Demo
+
+[See it in action](https://piccard21.github.io/vue-magic-line)
  
 ## Features
 
