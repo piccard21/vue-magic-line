@@ -82,6 +82,9 @@ Vue.use(VueMagicLine)
         </vue-magic-line-tab> 
       </vue-magic-line> 
 
+      <hr>
+      <b>control tabs programmatically</b>
+
       <input type="number" min="0" :max="tabsCount" v-model.number="tabDisable">
       <button @click="toggleDisable">Toggle Disable</button>
       <br>
@@ -153,7 +156,7 @@ Vue.use(VueMagicLine)
 
 ## Options
 
-### <vue-magic-line>
+### vue-magic-line
 
 Property | Description | Value | Default value
 --- | --- | --- | ---
@@ -171,7 +174,7 @@ Property | Description | Value | Default value
  **secondaryyBottom** | bottom for secondary line| Number | 3px
 
 
-### <vue-magic-line-tab>
+### vue-magic-line-tab
 
 Property | Description | Value | Default value
 --- | --- | --- | ---
