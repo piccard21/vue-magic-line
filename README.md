@@ -9,8 +9,8 @@
 ## Features
 
 - use the power of flex for the tabs layout
-- multiple options for styling
-- disable tab
+- style the tabs by properties or by overwriting the css classes
+- disabled tabs possible
 
 
 ## Configuration
@@ -58,7 +58,7 @@ Vue.use(VueMagicLine)
     <div class="my-awesome-tabs">
       
       <vue-magic-line 
-      :secondary="true" 
+      secondary
       :magic-line-wrapper-css="{'background': '#fff'}"  
       :magic-line-item-wrapper-css="{'justify-content': 'space-between', 'color': 'green'}"  
       :magic-line-item-css="{'flex-grow': '1'}"  
