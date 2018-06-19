@@ -301,7 +301,7 @@
       left: 0; 
       transition: all 0.3s;
       height: 3px;
-      background: rgb(0, 188, 212);
+      background: rgba(66, 185, 131, 0.44);
       z-index: 2000;
     }
 

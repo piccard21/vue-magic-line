@@ -145,10 +145,10 @@ Vue.use(VueMagicLine)
 .my-awesome-tabs {
   /deep/ .magic-line-wrapper {
     .magic-line-item-wrapper { 
-       .magic-line-secondary {
-          background: blue ;
-          height: 1px ;
-          bottom: -10px ;
+     .magic-line-secondary {
+        background: blue ;
+        height: 1px ;
+        bottom: -10px ;
       }
     }
   } 
