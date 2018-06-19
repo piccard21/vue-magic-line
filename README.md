@@ -19,7 +19,7 @@
 ### Install component
 
 
-#### Global
+#### Globally
 
 ``` 
 import VueMagicLine from 'vue-magic-line'
@@ -27,7 +27,7 @@ import VueMagicLine from 'vue-magic-line'
 Vue.use(VueMagicLine)
 ``` 
 
-#### Local
+#### Locally
 
 ``` 
 import {VueMagicLine, VueMagicLineTab} from 'vue-magic-line';

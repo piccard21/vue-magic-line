@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "vue": "^2.5.11",
-    "vue-magic-line": "^0.1.0"
+    "vue-magic-line": "^0.1.3"
   },
   "browserslist": [
     "> 1%",
