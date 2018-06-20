@@ -7,30 +7,31 @@
     </div>
 
     <div class="main">
-
-      <vue-magic-line>
-        <vue-magic-line-tab name="First tab" >
-            This is the content of the first vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Second tab" active>
-            This is the content of the second vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Third tab" disabled>
-            This is the content of the Third vue-magic-line-tab
-        </vue-magic-line-tab> 
-        <vue-magic-line-tab name="Fourth tab">
-            This is the content of the Fourth vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Fifth tab" disabled>
-            This is the content of the Fifth vue-magic-line-tab
-        </vue-magic-line-tab>
-        <vue-magic-line-tab name="Sixth tab">
-            This is the content of the Sixth vue-magic-line-tab
-        </vue-magic-line-tab> 
-      </vue-magic-line> 
-      
-      <default01/>
-      
+      <div class="container">
+        <vue-magic-line>
+          <vue-magic-line-tab name="First tab" >
+              This is the content of the first vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Second tab" active>
+              This is the content of the second vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Third tab" disabled>
+              This is the content of the Third vue-magic-line-tab
+          </vue-magic-line-tab> 
+          <vue-magic-line-tab name="Fourth tab">
+              This is the content of the Fourth vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Fifth tab" disabled>
+              This is the content of the Fifth vue-magic-line-tab
+          </vue-magic-line-tab>
+          <vue-magic-line-tab name="Sixth tab">
+              This is the content of the Sixth vue-magic-line-tab
+          </vue-magic-line-tab> 
+        </vue-magic-line> 
+          
+        <default01/> 
+ 
+      </div>
     </div>
   </div>
 </template>
