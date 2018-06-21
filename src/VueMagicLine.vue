@@ -115,17 +115,18 @@
           let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
 
           elToPosition.style.width = elMetrics.width + "px"
-          elToPosition.style.left = elMetrics.left + "px"
+          elToPosition.style.left = elMetrics.left-elMetricsItemWrapper.left + "px"
           elToPosition.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + "px"
 
 
 
-          // console.info('parent', this.parent)
-          // console.info('elMetrics', elMetrics)
-          // console.info('elMetricsItemWrapper', elMetricsItemWrapper)
-          // console.info('width', elToPosition.style.width)
-          // console.info('left', elToPosition.style.left)
-          // console.info('top', elToPosition.style.top)
+          console.info('parent', this.parent)
+          console.info('elMetrics', elMetrics)
+          console.info('elMetricsItemWrapper', elMetricsItemWrapper)
+          console.info('w-left left', elMetricsItemWrapper.left, elMetrics.left)
+          console.info('width', elToPosition.style.width)
+          console.info('left', elToPosition.style.left)
+          console.info('top', elToPosition.style.top)
         },
         setPrimary(el) {   
           if(typeof el === "undefined" ) return 
