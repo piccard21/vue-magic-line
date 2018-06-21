@@ -5,7 +5,7 @@
             <div ref="magic-line-item-wrapper" class="magic-line-item-wrapper" @mouseleave="onMouseleave($event)">
               <div class="magic-line-item" v-for="(tab, index) in tabs" :key="index"> 
                     <a href="#" 
-                        @click="onClick($event, index)" 
+                        @click.prevent="onClick($event, index)" 
                         @mouseover="onHover($event)"
                         class="magic-line-item-link"
                         :class="{ active: isPrimary(index), disabled: isDisabled(index) }">
@@ -273,6 +273,7 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      padding: 1.5rem 0;
 
       .magic-line-item {
         padding: .5rem;

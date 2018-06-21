@@ -1,11 +1,12 @@
 <template> 
   <div class="content">
-    <h6 class="title is-5">Default Settings</h6> 
+    <h6 class="title is-5">Hide secondary</h6> 
     <p>
-      Vue-magic-line out of the box, with active and disabled attributes.
+      To hide the secondary line set the property <b>secondary</b> to false.
     </p>
-    <vue-magic-line
-      :magic-line-item-wrapper-css="{'margin-left': '-8px'}">
+    <vue-magic-line 
+      :magic-line-item-wrapper-css="{'margin-left': '-8px'}"
+      :secondary="false">
       <vue-magic-line-tab name="First tab" >
           This is the content of the first vue-magic-line-tab
       </vue-magic-line-tab>
@@ -44,7 +45,7 @@ export default {
     return {
       isOpen: false,
       code: `
-<vue-magic-line>
+<vue-magic-line :secondary="false">
     <vue-magic-line-tab name="First tab" >
         This is the content of the first vue-magic-line-tab
     </vue-magic-line-tab>

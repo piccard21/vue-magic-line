@@ -1,51 +1,47 @@
 <template>
   <div id="app">
-    <div class="header">
-      <img src="./assets/logo.png">
-      <h1>{{ title }}</h1>
-      <h2>A tabs vue-component</h2> 
-    </div>
-
-    <div class="main">
-      <div class="container">
-        <vue-magic-line>
-          <vue-magic-line-tab name="First tab" >
-              This is the content of the first vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Second tab" active>
-              This is the content of the second vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Third tab" disabled>
-              This is the content of the Third vue-magic-line-tab
-          </vue-magic-line-tab> 
-          <vue-magic-line-tab name="Fourth tab">
-              This is the content of the Fourth vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Fifth tab" disabled>
-              This is the content of the Fifth vue-magic-line-tab
-          </vue-magic-line-tab>
-          <vue-magic-line-tab name="Sixth tab">
-              This is the content of the Sixth vue-magic-line-tab
-          </vue-magic-line-tab> 
-        </vue-magic-line> 
-          
-        <default01/> 
- 
+    <section class="section">
+      <div class="header">
+        <img src="./assets/logo.png">
+          <h4 class="title is-4">{{ title }}</h4>
+          <h5 class="title is-5">A tabs vue-component</h5> 
       </div>
-    </div>
+    </section>
+
+    <section class="section">
+      <div class="main">
+        <div class="container">
+            
+          <default01/> 
+          <hide-sec02/> 
+          <primary-sec03/> 
+          <parent-05/> 
+          <responsive-06/> 
+          <btn-07/> 
+   
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-import {VueMagicLine, VueMagicLineTab} from 'vue-magic-line';
 import Default01 from './components/Default_01';
+import HideSec02 from './components/HideSec_02';
+import PrimarySec03 from './components/PrimarySec_03';
+import Parent05 from './components/Parent_05';
+import Responsive06 from './components/Responsive_06';
+import Btn07 from './components/Btn_07';
 
 export default {
   name: 'app',
   components: {
-    VueMagicLine,
-    VueMagicLineTab,
-    Default01
+    Default01,
+    HideSec02,
+    PrimarySec03,
+    Parent05,
+    Responsive06,
+    Btn07
   },
   data () {
     return {
@@ -71,5 +67,9 @@ export default {
 
 a {
   color: #42b983;
+}
+
+.magic-line-content-wrapper {
+    padding: 2rem 0;
 }
 </style>

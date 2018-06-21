@@ -6,7 +6,7 @@
 
       <transition name="fade"> 
         <div ref="sourcecode" class="sourcecode" v-show="isOpen">  
-            <highlight-code lang="xml" :code="code"/> 
+            <highlight-code :lang="lang" :code="code"/> 
         </div> 
       </transition> 
   </div>
@@ -24,6 +24,10 @@ export default {
       code: {
         type: String,
         default: ''
+      },
+      lang: {
+        type: String,
+        default: 'xml'
       }
   },
   components: { 
