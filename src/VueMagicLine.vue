@@ -273,7 +273,6 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      padding: 1.5rem 0;
 
       .magic-line-item {
         padding: .5rem;
@@ -317,6 +316,10 @@
     }
 
   } 
+
+  .magic-line-content-wrapper {
+      padding: 2rem 0;
+  }
 
 } 
 </style>
