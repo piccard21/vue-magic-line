@@ -184,13 +184,13 @@ Property | Description | Value | Default value
  **magicLineWrapperCss** | CSS for  class **magic-line-wrapper**| Object | {}
  **magicLineItemWrapperCss** | CSS for  class **magic-line-item-wrapper**| Object | {}
  **magicLineItemCss** | CSS for  class **magic-line-item**| Object | {}
- **magicLineItemCLinkss** | CSS for  class **magic-line-item-link**| Object | {}
+ **magicLineItemLinkCss** | CSS for  class **magic-line-item-link**| Object | {}
  **primaryColor** | color for primary line| String | rgb(0, 188, 212)
  **primaryHeight** | height for primary line| Number | 3px
  **primaryBottom** | bottom for primary line| Number | 3px
  **secondaryColor** | color for secondary line| String | rgba(211, 211, 211, 0.4)
  **secondaryHeight** | height for secondary line| Number | 2px
- **secondaryyBottom** | bottom for secondary line| Number | 3px
+ **secondaryBottom** | bottom for secondary line| Number | 3px
 
 
 ### vue-magic-line-tab
