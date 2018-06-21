@@ -69,7 +69,4 @@ a {
   color: #42b983;
 }
 
-.magic-line-content-wrapper {
-    padding: 2rem 0;
-}
 </style>
