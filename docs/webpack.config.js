@@ -6,9 +6,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     // dev
-    // publicPath: '/dist/',
+    publicPath: '/dist/',
     // live:
-    publicPath: './dist/',
+    // publicPath: './dist/',
     filename: 'build.js'
   },
   plugins: [

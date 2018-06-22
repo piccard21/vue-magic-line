@@ -92,7 +92,6 @@
         },
         onClick(event, index) {
              if(event.target.classList.contains("disabled")) {
-              event.preventDefault
               return
              }
              this.activeIndex=index
