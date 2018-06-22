@@ -4,11 +4,11 @@
       <a class="button is-small" @click="toggleCode">See code</a>
     </div>
 
-      <transition name="fade"> 
-        <div ref="sourcecode" class="sourcecode" v-show="isOpen">  
-            <highlight-code :lang="lang" :code="code"/> 
-        </div> 
-      </transition> 
+    <transition name="fade"> 
+      <div ref="sourcecode" class="sourcecode" v-show="isOpen">  
+          <highlight-code :lang="lang" :code="code"/> 
+      </div> 
+    </transition> 
   </div>
 </template>
 
@@ -59,5 +59,15 @@ export default {
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+.sourcecode {
+    /deep/ pre {
+      background-color: #fff;
+
+      code {
+        background: #fff;
+      }
+    }
 }
 </style>
