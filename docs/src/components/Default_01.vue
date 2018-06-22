@@ -4,9 +4,8 @@
     <p>
       Vue-magic-line out of the box, with active and disabled attributes.
     </p>
-    <vue-magic-line
-      :magic-line-item-wrapper-css="{'margin-left': '-8px'}">
-      <vue-magic-line-tab name="First tab" >
+    <vue-magic-line>
+      <vue-magic-line-tab name="First tab">
           This is the content of the first vue-magic-line-tab
       </vue-magic-line-tab>
       <vue-magic-line-tab name="Second tab" active>
@@ -72,4 +71,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.content {
+  /deep/ .magic-line-item:first-of-type {
+    padding-left: 0;
+  }
+}
 </style>
