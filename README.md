@@ -5,13 +5,6 @@
 ## Demo
 
 [See here for examples](https://piccard21.github.io/vue-magic-line)
- 
-## Features
-
-- responsive
-- mark tabs as disabled
-- use the power of flex for the tabs layout
-- style the tabs by properties or by overwriting the css classes
 
 
 ## Configuration
