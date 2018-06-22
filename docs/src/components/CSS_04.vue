@@ -1,10 +1,30 @@
 <template> 
   <div class="content">
-    <h6 class="title is-5">Primary & Secondary CSS settings</h6> 
+    <h6 class="title is-5">CSS settings</h6> 
     <p>
-      Set color, height and bottom margin of the primary and secondary line.  
+      From the outer to the inner <i>vue-magic-line</i> consists out of 6 classes.
+      <ul>
+        <li>magic-line-wrapper</li>
+        <li>magic-line-item-wrapper</li>
+        <li>magic-line-item</li>
+        <li>magic-line-item-link</li>
+        <li>magic-line-content-wrapper</li>
+        <li>magic-line-content </li>
+      </ul>
+
+      You can assign CSS to it, wether by parameters or by your own. The parameters you can use are:
+      <ul>
+        <li>magicLineWrapperCss</li>
+        <li>magicLineItemWrapperCss</li>
+        <li>magicLineItemCss</li>
+        <li>magicLineContentCss</li>
+        <li>magicLineContentItemCss</li>
+      </ul>
+
+      Be aware that <b>magic-line-item-wrapper</b> is a flex item, so you can do great things with the layout of the tabs.
+      See here some examples:
     </p>
-    <vue-magic-line>
+    <vue-magic-line ref="vue-magic-line">
       <vue-magic-line-tab name="First tab" >
           This is the content of the first vue-magic-line-tab
       </vue-magic-line-tab>
@@ -25,6 +45,29 @@
       </vue-magic-line-tab> 
     </vue-magic-line> 
 
+
+
+    <div class="field is-horizontal">
+      <label class="field-label is-normal">justify-content</label>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <div class="select" ref="select-justify-content">
+                <select v-model="justifyContent">
+                  <option value="">--Select--</option>
+                  <option value="flex-start">flex-start</option>
+                  <option value="flex-end">flex-end</option>
+                  <option value="center">center</option>
+                  <option value="space-around">space-around</option>
+                  <option value="space-between">space-between</option>
+                  <option value="space-evenly">space-evenly</option>
+                </select>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
     <sourcecode :code="code" /> 
     
   </div> 
@@ -41,15 +84,14 @@ export default {
   },
   data () {
     return {
-      isOpen: false,
-      code: `
+      justifyContent: '',
+    }
+  },
+  computed: {
+      code() {
+        return `
 <vue-magic-line
-  primary-color="#009688" 
-  :primary-height="10" 
-  :primary-bottom="-8"
-  secondary-color="rgba(0, 188, 212, 0.57)" 
-  :secondary-height="10" 
-  :secondary-bottom="-8">
+      :magic-line-item-wrapper-css="{'justify-content': '${this.justifyContent}'}">
   <vue-magic-line-tab name="First tab" >
       This is the content of the first vue-magic-line-tab
   </vue-magic-line-tab>
@@ -70,6 +112,16 @@ export default {
   </vue-magic-line-tab> 
 </vue-magic-line> 
   `
+      } 
+  },
+  methods: {
+  },
+  watch: {
+    justifyContent() {
+      this.$refs['vue-magic-line'].$el.getElementsByClassName('magic-line-item-wrapper')[0].style['justify-content'] = this.justifyContent
+      let firstLink = this.$children[0].$el.querySelector('.magic-line-item-link')
+      this.$children[0].setPrimary(firstLink)
+      this.$children[0].setSecondary(firstLink)
     }
   }
 }

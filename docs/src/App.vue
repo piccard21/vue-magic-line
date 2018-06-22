@@ -18,6 +18,7 @@
           <parent-05/> 
           <responsive-06/> 
           <btn-07/> 
+          <css-04/> 
    
         </div>
       </div>
@@ -29,6 +30,7 @@
 import Default01 from './components/Default_01';
 import HideSec02 from './components/HideSec_02';
 import PrimarySec03 from './components/PrimarySec_03';
+import Css04 from './components/CSS_04';
 import Parent05 from './components/Parent_05';
 import Responsive06 from './components/Responsive_06';
 import Btn07 from './components/Btn_07';
@@ -39,6 +41,7 @@ export default {
     Default01,
     HideSec02,
     PrimarySec03,
+    Css04,
     Parent05,
     Responsive06,
     Btn07
