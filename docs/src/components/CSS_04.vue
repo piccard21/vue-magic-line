@@ -17,6 +17,7 @@
         <li>magicLineWrapperCss</li>
         <li>magicLineItemWrapperCss</li>
         <li>magicLineItemCss</li>
+        <li>magicLineItemLinkCss</li>
         <li>magicLineContentCss</li>
         <li>magicLineContentItemCss</li>
       </ul>
