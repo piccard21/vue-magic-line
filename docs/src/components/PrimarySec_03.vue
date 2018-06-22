@@ -1,5 +1,5 @@
 <template> 
-  <div class="default-01 content">
+  <div class="content">
     <h6 class="title is-5">Primary & Secondary CSS settings</h6> 
     <p>
       Set color, height and bottom margin of the primary and secondary line.  
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.default-01 {
+.content {
   /deep/ .magic-line-item:first-of-type {
     padding-left: 0;
   }

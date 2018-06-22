@@ -42,7 +42,7 @@
               <input class="input" type="number" min="0" :max="tabsCount" v-model.number="tabActive">
           </p>
           <p class="control">
-              <button @click="toggleActive" class="button">Toggle Active</button>
+              <button @click="toggleActive" class="button">Set Active</button>
           </p>
         </div> 
       </p>
