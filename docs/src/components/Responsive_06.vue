@@ -1,11 +1,11 @@
 <template> 
   <div class="default-01 content">
-    <h6 class="title is-5">Responsive</h6> 
+    <h6 class="title is-5">responsive</h6> 
     <p>
       The tabs automatically break 
     </p>
     <vue-magic-line
-      :magic-line-item-wrapper-css="{'margin-left': '-8px'}">
+      :magic-line-wrapper-css="{'margin-left': '-8px'}">
       <vue-magic-line-tab name="First tab" >
           This is the content of the first vue-magic-line-tab
       </vue-magic-line-tab>

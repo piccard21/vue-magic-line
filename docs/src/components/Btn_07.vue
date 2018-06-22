@@ -2,7 +2,7 @@
   <div class="default-01 content">
     <h6 class="title is-5">Control tabs by code</h6> 
     <p>
-      Set at tab as active or disable it by Vue.  
+      Set a tab as active or disable it by Vue.  
     </p>
 
     <div class="my-awesome-tabs">
