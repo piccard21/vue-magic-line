@@ -3,8 +3,18 @@
     <section class="section">
       <div class="header">
         <img src="./assets/logo.png">
-          <h4 class="title is-4">{{ title }}</h4>
-          <h5 class="title is-5">A tabs vue-component</h5> 
+        <div class="hero is-hero-custom is-primary">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                {{ title }}
+              </h1>
+              <h2 class="subtitle">
+                A tabs vue-component
+              </h2>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -60,11 +70,15 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .header {
   font-weight: normal;
   text-align: center;
+
+  .is-hero-custom {
+    background: rgba(64, 184, 130, 0.88) !important;
+    color: #fff;
+  }
 }
  
 
