@@ -95,7 +95,7 @@ export default {
       if(this.disabledTabs.indexOf(this.tabActive) > -1) {
         console.info("disabled")
       } else {
-        this.$children[0].activeIndex = this.tabActive
+        this.vueMagicLine.activeIndex = this.tabActive
       }
     }
   },
@@ -129,7 +129,7 @@ export default {
       if(this.disabledTabs.indexOf(this.tabActive) > -1) {
         console.info("disabled")
       } else {
-        this.$children[0].activeIndex = this.tabActive
+        this.vueMagicLine.activeIndex = this.tabActive
       }
     }
   },
