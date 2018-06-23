@@ -79,6 +79,7 @@ Property | Description | Value | Default value
  **secondary-color** | color for secondary line| String | rgba(211, 211, 211, 0.4)
  **secondary-height** | height for secondary line| Number | 2px
  **secondary-top** | add some margin to secondary line| Number | 3px
+ **duration** | duration for magic-line transition in seconds| Number | 0.3
 
 
 ### vue-magic-line-tab

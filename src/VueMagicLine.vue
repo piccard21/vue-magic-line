@@ -85,6 +85,10 @@
         secondaryTop: {
           type: Number,
           default: 0
+        },
+        duration: {
+          type: Number,
+          default: 0.3
         }
       },
       data () {
@@ -127,8 +131,6 @@
 
           let elMetrics = el.getBoundingClientRect()
           let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
-
-
 
           elToPosition.style.width = elMetrics.width + "px"
           elToPosition.style.left = elMetrics.left-elMetricsItemWrapper.left + "px"
@@ -196,9 +198,6 @@
           if(this.primaryHeight) {
             this.magicLinePrimary.style.height = this.primaryHeight+"px";
           }
-          // if(this.primaryTop) {
-          //   this.magicLinePrimary.style.top = this.primaryTop+"px";
-          // }
 
           // secondary
           if(!this.secondary) {
@@ -210,10 +209,11 @@
             if(this.secondaryHeight) {
               this.magicLineSecondary.style.height = this.secondaryHeight+"px";
             }
-            // if(this.secondaryTop) {
-            //   this.magicLineSecondary.style.top = this.secondaryTop+"px";
-            // }
           }
+
+          // duration
+          this.magicLinePrimary.style.transition = "all " + this.duration +"s"
+          this.magicLineSecondary.style.transition = "all " + this.duration +"s"
         }
       },
       computed: {
@@ -318,7 +318,6 @@
       position: absolute;
       bottom: 3px;
       left: 0; 
-      transition: all 0.3s;
       height: 3px;
       background: rgba(66, 185, 131, 0.44);
       z-index: 2000;
@@ -330,7 +329,6 @@
       left: 0;
       height: 2px;
       background: rgba(211, 211, 211, 0.4);
-      transition: all 0.3s;
       z-index: 1000;
     }
 
