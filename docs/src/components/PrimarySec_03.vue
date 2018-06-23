@@ -52,10 +52,10 @@ export default {
 <vue-magic-line
   primary-color="#009688" 
   :primary-height="10" 
-  :primary-top="2"
+  :primary-top="4"
   secondary-color="rgba(0, 188, 212, 0.57)" 
-  :secondary-height="10" 
-  :secondary-top="4">
+  :secondary-height="5" 
+  :secondary-top="2">
   <vue-magic-line-tab name="First tab" >
       This is the content of the first vue-magic-line-tab
   </vue-magic-line-tab>
