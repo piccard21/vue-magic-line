@@ -60,14 +60,21 @@
             return {}
           }
         },
+        magicLineContentWrapperCss: {
+          type: Object,
+          default: function () {
+            return {}
+          }
+        },
         primaryColor: {
           type: String
         },
         primaryHeight: {
           type: Number
         },
-        primaryBottom: {
-          type: Number
+        primaryTop: {
+          type: Number,
+          default: 0
         },
         secondaryColor: {
           type: String
@@ -75,8 +82,13 @@
         secondaryHeight: {
           type: Number
         },
-        secondaryBottom: {
-          type: Number
+        secondaryTop: {
+          type: Number,
+          default: 0
+        },
+        duration: {
+          type: Number,
+          default: 0.3
         }
       },
       data () {
@@ -110,17 +122,26 @@
             el = el.parentNode
           }
 
+          let top = 0
+          if(elToPosition.classList.contains('magic-line-primary')) {
+            top += this.primaryTop
+          } else {
+            top += this.secondaryTop
+          }
+
           let elMetrics = el.getBoundingClientRect()
           let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
 
           elToPosition.style.width = elMetrics.width + "px"
           elToPosition.style.left = elMetrics.left-elMetricsItemWrapper.left + "px"
-          elToPosition.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + "px"
+          elToPosition.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + top + "px"
         },
         setPrimary(el) {   
           if(typeof el === "undefined" ) return 
 
+          this.$emit('before-set-primary', this.magicLinePrimary)
           this.setPosition(el, this.magicLinePrimary)
+          this.$emit('set-primary', this.magicLinePrimary)
 
           for (let element of this.magicLineItemWrapper.getElementsByClassName("active")) {
             element.classList.remove('active')
@@ -132,7 +153,9 @@
           if(!this.secondary) return 
           if(typeof el === "undefined" ) return 
 
+          this.$emit('before-set-secondary', this.magicLineSecondary)
           this.setPosition(el, this.magicLineSecondary)
+          this.$emit('set-secondary', this.magicLineSecondary)
         },
         setCssObject(cssObject) { 
             if(cssObject.el instanceof HTMLCollection) {
@@ -165,6 +188,9 @@
           },{
             css: this.magicLineItemLinkCss, 
             el: this.magicLineItemLinks
+          },{
+            css: this.magicLineContentWrapperCss, 
+            el: this.magicLineContentWrapper
           }].forEach((object) => {
             this.setCssObject(object)
           })
@@ -175,9 +201,6 @@
           }
           if(this.primaryHeight) {
             this.magicLinePrimary.style.height = this.primaryHeight+"px";
-          }
-          if(this.primaryBottom) {
-            this.magicLinePrimary.style.bottom = this.primaryBottom+"px";
           }
 
           // secondary
@@ -190,10 +213,11 @@
             if(this.secondaryHeight) {
               this.magicLineSecondary.style.height = this.secondaryHeight+"px";
             }
-            if(this.secondaryBottom) {
-              this.magicLineSecondary.style.bottom = this.secondaryBottom+"px";
-            }
           }
+
+          // duration
+          this.magicLinePrimary.style.transition = "all " + this.duration +"s"
+          this.magicLineSecondary.style.transition = "all " + this.duration +"s"
         }
       },
       computed: {
@@ -298,7 +322,6 @@
       position: absolute;
       bottom: 3px;
       left: 0; 
-      transition: all 0.3s;
       height: 3px;
       background: rgba(66, 185, 131, 0.44);
       z-index: 2000;
@@ -310,7 +333,6 @@
       left: 0;
       height: 2px;
       background: rgba(211, 211, 211, 0.4);
-      transition: all 0.3s;
       z-index: 1000;
     }
 

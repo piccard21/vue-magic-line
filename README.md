@@ -60,7 +60,7 @@ import {VueMagicLine, VueMagicLineTab} from 'vue-magic-line';
 ``` 
 
 
-## Options
+## Properties
 
 ### vue-magic-line
 
@@ -68,16 +68,18 @@ Property | Description | Value | Default value
 --- | --- | --- | ---
  **secondary** | show secondary line | Boolean | true
  **parent** | apply to parent and not to link | Boolean | true
- **magicLineWrapperCss** | CSS for  class **magic-line-wrapper**| Object | {}
- **magicLineItemWrapperCss** | CSS for  class **magic-line-item-wrapper**| Object | {}
- **magicLineItemCss** | CSS for  class **magic-line-item**| Object | {}
- **magicLineItemLinkCss** | CSS for  class **magic-line-item-link**| Object | {}
- **primaryColor** | color for primary line| String | rgb(0, 188, 212)
- **primaryHeight** | height for primary line| Number | 3px
- **primaryBottom** | bottom for primary line| Number | 3px
- **secondaryColor** | color for secondary line| String | rgba(211, 211, 211, 0.4)
- **secondaryHeight** | height for secondary line| Number | 2px
- **secondaryBottom** | bottom for secondary line| Number | 3px
+ **magic-line-wrapper-css** | CSS for  class **magic-line-wrapper**| Object | {}
+ **magic-line-item-wrapper-css** | CSS for  class **magic-line-item-wrapper**| Object | {}
+ **magic-line-item-css** | CSS for  class **magic-line-item**| Object | {}
+ **magic-line-item-link-css** | CSS for  class **magic-line-item-link**| Object | {}
+ **magic-line-content-wrapper-css** | CSS for  class **magic-line-content-wrapper**| Object | {}
+ **primary-color** | color for primary line| String | rgb(0, 188, 212)
+ **primary-height** | height for primary line| Number | 3px
+ **primary-top** | add some margin to primary line| Number | 3px
+ **secondary-color** | color for secondary line| String | rgba(211, 211, 211, 0.4)
+ **secondary-height** | height for secondary line| Number | 2px
+ **secondary-top** | add some margin to secondary line| Number | 3px
+ **duration** | duration for magic-line transition in seconds| Number | 0.3
 
 
 ### vue-magic-line-tab
@@ -86,6 +88,17 @@ Property | Description | Value | Default value
 --- | --- | --- | ---
  **active** | set active tab | Boolean | true
  **disabled** | disable tab | Boolean | false
+
+
+## Events
+
+Event | Description | Parameters
+--- | --- | --- 
+ **before-set-primary** | before setting primary line | primary-line element
+ **set-primary** | after setting primary line | primary-line element
+ **before-set-secondary** | before setting secondary line | secondary-line element
+ **set-secondary** | after setting secondary line | secondary-line element
+
 
 
 
