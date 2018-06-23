@@ -72,8 +72,9 @@
         primaryHeight: {
           type: Number
         },
-        primaryBottom: {
-          type: Number
+        primaryTop: {
+          type: Number,
+          default: 0
         },
         secondaryColor: {
           type: String
@@ -81,8 +82,9 @@
         secondaryHeight: {
           type: Number
         },
-        secondaryBottom: {
-          type: Number
+        secondaryTop: {
+          type: Number,
+          default: 0
         }
       },
       data () {
@@ -116,12 +118,21 @@
             el = el.parentNode
           }
 
+          let top = 0
+          if(elToPosition.classList.contains('magic-line-primary')) {
+            top += this.primaryTop
+          } else {
+            top += this.secondaryTop
+          }
+
           let elMetrics = el.getBoundingClientRect()
           let elMetricsItemWrapper = this.magicLineItemWrapper.getBoundingClientRect() 
 
+
+
           elToPosition.style.width = elMetrics.width + "px"
           elToPosition.style.left = elMetrics.left-elMetricsItemWrapper.left + "px"
-          elToPosition.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + "px"
+          elToPosition.style.top = elMetrics.top - elMetricsItemWrapper.top + elMetrics.height + top + "px"
         },
         setPrimary(el) {   
           if(typeof el === "undefined" ) return 
@@ -185,9 +196,9 @@
           if(this.primaryHeight) {
             this.magicLinePrimary.style.height = this.primaryHeight+"px";
           }
-          if(this.primaryBottom) {
-            this.magicLinePrimary.style.bottom = this.primaryBottom+"px";
-          }
+          // if(this.primaryTop) {
+          //   this.magicLinePrimary.style.top = this.primaryTop+"px";
+          // }
 
           // secondary
           if(!this.secondary) {
@@ -199,9 +210,9 @@
             if(this.secondaryHeight) {
               this.magicLineSecondary.style.height = this.secondaryHeight+"px";
             }
-            if(this.secondaryBottom) {
-              this.magicLineSecondary.style.bottom = this.secondaryBottom+"px";
-            }
+            // if(this.secondaryTop) {
+            //   this.magicLineSecondary.style.top = this.secondaryTop+"px";
+            // }
           }
         }
       },
