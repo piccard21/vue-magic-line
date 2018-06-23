@@ -139,7 +139,9 @@
         setPrimary(el) {   
           if(typeof el === "undefined" ) return 
 
+          this.$emit('before-set-primary', this.magicLinePrimary)
           this.setPosition(el, this.magicLinePrimary)
+          this.$emit('set-primary', this.magicLinePrimary)
 
           for (let element of this.magicLineItemWrapper.getElementsByClassName("active")) {
             element.classList.remove('active')
@@ -151,7 +153,9 @@
           if(!this.secondary) return 
           if(typeof el === "undefined" ) return 
 
+          this.$emit('before-set-secondary', this.magicLineSecondary)
           this.setPosition(el, this.magicLineSecondary)
+          this.$emit('set-secondary', this.magicLineSecondary)
         },
         setCssObject(cssObject) { 
             if(cssObject.el instanceof HTMLCollection) {

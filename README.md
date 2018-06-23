@@ -60,7 +60,7 @@ import {VueMagicLine, VueMagicLineTab} from 'vue-magic-line';
 ``` 
 
 
-## Options
+## Properties
 
 ### vue-magic-line
 
@@ -88,6 +88,17 @@ Property | Description | Value | Default value
 --- | --- | --- | ---
  **active** | set active tab | Boolean | true
  **disabled** | disable tab | Boolean | false
+
+
+## Events
+
+Event | Description | Parameters
+--- | --- | --- 
+ **before-set-primary** | before setting primary line | primary-line element
+ **set-primary** | after setting primary line | primary-line element
+ **before-set-secondary** | before setting secondary line | secondary-line element
+ **set-secondary** | after setting secondary line | secondary-line element
+
 
 
 
