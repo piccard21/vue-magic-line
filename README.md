@@ -4,7 +4,7 @@
 
 ## Demo
 
-[See here for examples](https://piccard21.github.io/vue-magic-line)
+You can find some examples [here](https://piccard21.github.io/vue-magic-line)
 
 
 ## Configuration
