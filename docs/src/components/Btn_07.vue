@@ -7,7 +7,7 @@
 
     <div class="my-awesome-tabs">
       
-      <vue-magic-line >
+      <vue-magic-line>
         <vue-magic-line-tab name="First tab" >
             This is the content of the first vue-magic-line-tab
         </vue-magic-line-tab>
@@ -76,8 +76,11 @@ export default {
     }
   },
   computed: {
+    vueMagicLine() {
+          return this.$children.find(k => k.$options.name === 'vue-magic-line')
+    },
     disabledTabs() {
-      return this.$children[0].disabledTabs
+      return this.vueMagicLine.disabledTabs
     }
   },
   methods: {
@@ -97,7 +100,7 @@ export default {
     }
   },
   mounted() {
-    this.tabsCount = this.$children[0].$children.length-1
+    this.tabsCount = this.vueMagicLine.$children.length-1
   }
 }
   `,
@@ -107,8 +110,11 @@ export default {
     }
   },
   computed: {
+    vueMagicLine() {
+          return this.$children.find(k => k.$options.name === 'vue-magic-line')
+    },
     disabledTabs() {
-      return this.$children[0].disabledTabs
+      return this.vueMagicLine.disabledTabs
     }
   },
   methods: {
@@ -120,7 +126,6 @@ export default {
       }
     },
     toggleActive() { 
-
       if(this.disabledTabs.indexOf(this.tabActive) > -1) {
         console.info("disabled")
       } else {
@@ -129,7 +134,7 @@ export default {
     }
   },
   mounted() {
-    this.tabsCount = this.$children[0].$children.length-1
+    this.tabsCount = this.vueMagicLine.$children.length-1
   }
 }
 </script>
