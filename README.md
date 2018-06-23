@@ -3,6 +3,7 @@
 > A tabs-component for Vue.
 
 [![npm](https://img.shields.io/npm/dt/express.svg?style=flat-square)](https://www.npmjs.com/package/vue-magic-line)
+[![NPM](https://nodei.co/npm/vue-magic-line.png?mini=true)](https://nodei.co/npm/vue-magic-line/)
 
 ## Demo
 

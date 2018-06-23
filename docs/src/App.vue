@@ -12,7 +12,6 @@
               <h2 class="subtitle">
                 A tabs vue-component
               </h2>
-              <a href="https://www.npmjs.com/package/vue-magic-line"><img src="https://img.shields.io/npm/v/npm.svg" alt="Version"></a>
             </div>
           </div>
         </div>
