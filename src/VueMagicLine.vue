@@ -60,6 +60,12 @@
             return {}
           }
         },
+        magicLineContentWrapperCss: {
+          type: Object,
+          default: function () {
+            return {}
+          }
+        },
         primaryColor: {
           type: String
         },
@@ -165,6 +171,9 @@
           },{
             css: this.magicLineItemLinkCss, 
             el: this.magicLineItemLinks
+          },{
+            css: this.magicLineContentWrapperCss, 
+            el: this.magicLineContentWrapper
           }].forEach((object) => {
             this.setCssObject(object)
           })

@@ -9,7 +9,7 @@
         <li>magic-line-item</li>
         <li>magic-line-item-link</li>
         <li>magic-line-content-wrapper</li>
-        <li>magic-line-content </li>
+        <li>magic-line-item-content</li>
       </ul>
 
       You can assign CSS to it, wether by parameters or by your own. The parameters you can use are:
@@ -19,7 +19,6 @@
         <li>magicLineItemCss</li>
         <li>magicLineItemLinkCss</li>
         <li>magicLineContentCss</li>
-        <li>magicLineContentItemCss</li>
       </ul>
 
       Be aware that <b>magic-line-item-wrapper</b> is a flex item, so you can do great things with the layout of the tabs.
