@@ -94,10 +94,10 @@ Property | Description | Value | Default value
 
 Event | Description | Parameters
 --- | --- | --- 
- **before-set-primary** | before positioning primary line | primary-line, active tab
- **set-primary** | after positioning primary line | primary-line, active tab
- **before-set-secondary** | before positioning secondary line | secondary-line, active tab
- **set-secondary** | after positioning secondary line | secondary-line, active tab
+ **before-set-primary** | before positioning primary line | primary-line, tab
+ **set-primary** | after positioning primary line | primary-line, tab
+ **before-set-secondary** | before positioning secondary line | secondary-line, tab
+ **set-secondary** | after positioning secondary line | secondary-line, tab
 
 
 
