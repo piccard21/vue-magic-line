@@ -2,7 +2,7 @@
   <div class="default-01 content">
     <h6 class="title is-5">responsive</h6> 
     <p>
-      The tabs automatically break 
+      The tabs break whereas the lines automatically adjust themselves. Try to resize the window.
     </p>
     <vue-magic-line
       :magic-line-wrapper-css="{'margin-left': '-8px'}">
@@ -230,8 +230,6 @@
 </template>
 
 <script>
-
-
 import Sourcecode from './Sourcecode';  
 
 export default {

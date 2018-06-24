@@ -34,8 +34,8 @@
           <default01/> 
           <hide-sec02/> 
           <primary-sec03/> 
-          <parent-05/> 
           <responsive-06/> 
+          <parent-05/> 
           <css-04/> 
           <btn-07/> 
    
