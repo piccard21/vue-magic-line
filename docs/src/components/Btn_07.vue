@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     vueMagicLine() {
-          return this.$children.find(k => k.$options.name === 'vue-magic-line')
+      return this.$children.find(c => c.$options.name === 'vue-magic-line')
     },
     disabledTabs() {
       return this.vueMagicLine.disabledTabs
