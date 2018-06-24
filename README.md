@@ -97,7 +97,7 @@ Event | Description | Parameters
  **before-set-primary** | before positioning primary line | primary-line element
  **set-primary** | after positioning primary line | primary-line element
  **before-set-secondary** | before positioning secondary line | secondary-line element
- **set-secondary** | after setting positioning line | secondary-line element
+ **set-secondary** | after positioning secondary line | secondary-line element
 
 
 
