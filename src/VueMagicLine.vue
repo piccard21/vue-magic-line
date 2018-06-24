@@ -95,7 +95,8 @@
         return {
             tabs: [],
             disabledTabs: [],
-            currentActiveIndex: 0
+            currentActiveIndex: 0,
+            elMetricsMagicLineWrapper: undefined
         }
       }, 
       methods: {
@@ -218,6 +219,17 @@
           // duration
           this.magicLinePrimary.style.transition = "all " + this.duration +"s"
           this.magicLineSecondary.style.transition = "all " + this.duration +"s"
+        },
+        isEqual(a,b) {
+            return JSON.stringify(a) === JSON.stringify(b);
+        },
+        checkMagicLineWrapperHasResized() {
+          let currentMetrics = this.magicLineWrapper.getBoundingClientRect() 
+          if(this.isEqual(this.elMetricsMagicLineWrapper, currentMetrics)) return
+
+          this.elMetricsMagicLineWrapper = currentMetrics
+          // looks stupid, but reassigning actually triggers setPrimary & setSecondary  
+          this.activeIndex = this.activeIndex 
         }
       },
       computed: {
@@ -262,7 +274,7 @@
         }
       }, 
       created() {
-        this.tabs = this.$children 
+        this.tabs = this.$children
       },
       mounted() {
         this.$nextTick( () => { 
@@ -281,6 +293,10 @@
               this.disabledTabs.push(i)
             } 
           }
+
+          // detected resizing
+          this.elMetricsMagicLineWrapper = this.magicLineWrapper.getBoundingClientRect() 
+          window.onresize = () => this.checkMagicLineWrapperHasResized();
         })
        }  
     }
