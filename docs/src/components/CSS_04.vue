@@ -208,7 +208,6 @@ export default {
     }
   },
   mounted() {
-    console.info(this.vueMagicLine)
   },
   methods: {
   },
