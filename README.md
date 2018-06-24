@@ -2,6 +2,9 @@
 
 > A tabs-component for Vue.
 
+[![NPM](https://img.shields.io/npm/dt/express.svg?style=flat-square)](https://www.npmjs.com/package/vue-magic-line)
+[![NPM](https://nodei.co/npm/vue-magic-line.png?mini=true)](https://nodei.co/npm/vue-magic-line/)
+
 ## Demo
 
 You can find some examples [here](https://piccard21.github.io/vue-magic-line)
