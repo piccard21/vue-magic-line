@@ -148,7 +148,7 @@
             element.classList.remove('active')
           }
 
-          el.parentNode.classList.add('active');
+          el.parentNode.classList.add('active')
         },
         setSecondary(el) { 
           if(!this.secondary) return 
@@ -162,16 +162,16 @@
             if(cssObject.el instanceof HTMLCollection) {
               for (let el of cssObject.el) { 
                   Object.entries(cssObject.css).forEach((entry) => {
-                    let [key, value] = entry;
+                    let [key, value] = entry
                     el.style[key] = value 
-                  }); 
+                  })
               }
             }
             else {
               Object.entries(cssObject.css).forEach((entry) => {
-                let [key, value] = entry;
+                let [key, value] = entry
                 cssObject.el.style[key] = value 
-              });
+              })
             } 
 
         },
@@ -198,10 +198,10 @@
 
           // primary
           if(this.primaryColor) {
-            this.magicLinePrimary.style.background = this.primaryColor;
+            this.magicLinePrimary.style.background = this.primaryColor
           }
           if(this.primaryHeight) {
-            this.magicLinePrimary.style.height = this.primaryHeight+"px";
+            this.magicLinePrimary.style.height = this.primaryHeight+"px"
           }
 
           // secondary
@@ -209,10 +209,10 @@
             this.magicLineSecondary.parentNode.removeChild(this.magicLineSecondary)
           } else {
             if(this.secondaryColor) {
-            this.magicLineSecondary.style.background = this.secondaryColor;
+            this.magicLineSecondary.style.background = this.secondaryColor
             }
             if(this.secondaryHeight) {
-              this.magicLineSecondary.style.height = this.secondaryHeight+"px";
+              this.magicLineSecondary.style.height = this.secondaryHeight+"px"
             }
           }
 
@@ -221,7 +221,7 @@
           this.magicLineSecondary.style.transition = "all " + this.duration +"s"
         },
         isEqual(a,b) {
-            return JSON.stringify(a) === JSON.stringify(b);
+            return JSON.stringify(a) === JSON.stringify(b)
         },
         checkMagicLineWrapperHasResized() {
           let currentMetrics = this.magicLineWrapper.getBoundingClientRect() 
@@ -268,7 +268,7 @@
             this.setSecondary(this.magicLineItemLinks[index]) 
 
             for(let [i, tab] of this.tabs.entries()) {  
-                tab.isActive = (index === i);
+                tab.isActive = (index === i)
             }
           } 
         }
@@ -295,8 +295,10 @@
           }
 
           // detected resizing
-          this.elMetricsMagicLineWrapper = this.magicLineWrapper.getBoundingClientRect() 
-          window.onresize = () => this.checkMagicLineWrapperHasResized();
+          this.elMetricsMagicLineWrapper = this.magicLineWrapper.getBoundingClientRect()
+          window.addEventListener('resize', () => {
+            this.checkMagicLineWrapperHasResized()
+          })
         })
        }  
     }

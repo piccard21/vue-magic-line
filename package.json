@@ -11,7 +11,7 @@
     "component",
     "tabs-component"
   ],
-  "version": "0.1.9",
+  "version": "0.2.0",
   "author": "cafe-serendipity <cafe.serendipity21@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-magic-line.js",
