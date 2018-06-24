@@ -38,9 +38,10 @@
     <br>
 
     <h6 class="title is-6">magic-line-item-wrapper</h6> 
-
+    <p>
       Be aware that <b>magic-line-item-wrapper</b> is a flex item, so you can do some pretty awesome things with the layout of the tabs.
       See here some examples:
+    </p>
 
     <vue-magic-line 
     ref="vue-magic-line-1">

@@ -1,5 +1,14 @@
 <template>
-  <div id="app">
+  <div id="app"> 
+    <div class="links" style="margin: .5rem;">
+      <a href="https://www.npmjs.com/package/vue-magic-line" target="_blank">
+        <span class="tag link-tag">npm</span>
+      </a>
+      <a href="https://github.com/piccard21/vue-magic-line" target="_blank">
+        <span class="tag link-tag">github</span>
+      </a>    
+    </div>
+
     <section class="section">
       <div class="header">
         <img src="./assets/logo.png">
@@ -70,20 +79,24 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-.header {
-  font-weight: normal;
-  text-align: center;
 
-  .is-hero-custom {
-    background: rgba(64, 184, 130, 0.88) !important;
-    color: #fff;
+  .links {
+    .link-tag {
+      background: #5ac191;
+      color: #fff;
+    }
+  }
+
+  .header {
+    font-weight: normal;
+    text-align: center;
+
+    .is-hero-custom {
+      background: rgba(64, 184, 130, 0.88) !important;
+      color: #fff;
+    }
   }
 }
  
-
-a {
-  color: #42b983;
-}
 
 </style>
