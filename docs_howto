@@ -1,0 +1,8 @@
+- npm install -g serve
+- cd docs_template
+- yarn serve
+- yarn build
+- rm -Rf ../docs
+- cp -rp dist ../docs
+- cd ..
+- serve -s docs
