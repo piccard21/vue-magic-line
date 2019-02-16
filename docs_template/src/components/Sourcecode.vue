@@ -13,11 +13,21 @@
 </template>
 
 <script>
- 
+import Vue from 'vue' 
 import VueHighlightJS from 'vue-highlight.js';
 import 'highlight.js/styles/default.css'; 
 
-Vue.use(VueHighlightJS)
+// Highlight.js languages
+import javascript from 'highlight.js/lib/languages/javascript';
+import vue from 'vue-highlight.js/lib/languages/vue';
+
+Vue.use(VueHighlightJS, {
+  // Register only languages that you want
+  languages: {
+    javascript,
+    vue
+  }
+})
 
 export default {
   props: {
@@ -27,7 +37,7 @@ export default {
       },
       lang: {
         type: String,
-        default: 'xml'
+        default: 'vue'
       }
   },
   components: { 
