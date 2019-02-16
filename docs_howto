@@ -6,3 +6,6 @@
 - cp -rp dist ../docs
 - cd ..
 - serve -s docs
+
+- docs/index.html
+	-> make all /css & /js relative, otherwise https://piccard21.github.io/vue-magic-line/ won't work
