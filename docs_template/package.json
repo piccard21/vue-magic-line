@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "highlight.js": "^9.14.2",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.5.22",
     "vue-highlight.js": "^3.0.1",
     "vue-magic-line": "^0.2.1"
